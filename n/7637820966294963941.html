@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>我的Agent学习路线推荐。</title>
+<meta name="description" content="陈辰分享了基于自身经验的Agent学习路线，强调应先理解底层机制再学习框架，并推荐以LangGraph为核心进行实践。">
+<meta property="og:title" content="我的Agent学习路线推荐。">
+<meta property="og:description" content="陈辰分享了基于自身经验的Agent学习路线，强调应先理解底层机制再学习框架，并推荐以LangGraph为核心进行实践。">
+<meta property="og:type" content="article">
+<style>
+:root{
+ --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --sub:#6b7280; --line:#e5e7eb;
+ --accent:#0f766e; --accent-soft:#ecfdf5; --tag:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+header.top{padding:6px 2px 16px}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.4px}
+.meta{color:var(--sub);font-size:14px}
+.stats{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;
+ padding:6px 12px;font-size:13px;cursor:pointer;color:var(--sub);transition:.15s;
+ font-family:inherit;line-height:1.4}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+ display:flex;flex-direction:column;cursor:pointer;transition:.18s;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10);border-color:#d6dde5}
+.thumb{aspect-ratio:16/10;background:#eef1f4 center/cover no-repeat;position:relative}
+.thumb .cat{position:absolute;left:10px;top:10px;background:rgba(15,118,110,.94);color:#fff;
+ font-size:12px;padding:3px 9px;border-radius:6px;letter-spacing:.3px}
+.thumb .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;
+ font-size:12px;padding:2px 7px;border-radius:5px}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card h3{margin:0;font-size:15.5px;line-height:1.45;font-weight:600;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.autor{font-size:12.5px;color:var(--sub)}
+.one{font-size:13.5px;color:#374151;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:4px;font-size:12.5px;color:var(--accent);font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;
+ color:var(--accent);cursor:pointer;background:none;border:0;padding:6px 0;font-weight:600;font-family:inherit}
+.back:hover{opacity:.75}
+.pos{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero{position:relative;height:380px;background:#101418;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:-30px;background:center/cover no-repeat;
+ filter:blur(26px) saturate(1.1);opacity:.5;transform:scale(1.12)}
+.hero-fg{position:absolute;inset:0;background:center/contain no-repeat;z-index:1}
+.dbody{padding:20px 22px 24px}
+.dbody h2{margin:0 0 10px;font-size:20px;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tags span{background:var(--tag);color:#475569;font-size:12.5px;padding:4px 10px;border-radius:7px}
+.sec-t{font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;
+ letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.sec-t::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px}
+.sec-t .cnt{font-weight:500;color:var(--sub);font-size:12px;letter-spacing:0}
+.lead{font-size:15px;color:#242a31;margin:0}
+ul.pts{margin:0;padding-left:0;list-style:none}
+ul.pts li{position:relative;padding-left:20px;margin:8px 0;color:#242a31;font-size:15px}
+ul.pts li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+ border-radius:50%;background:var(--accent);opacity:.55}
+.kv{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;
+ padding:11px 14px;font-size:14px;color:#155e56}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;
+ font-family:inherit;line-height:1.4}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn.g{background:#f3f4f6;color:#374151;border-color:var(--line)}
+.transcript{margin-top:4px;max-height:62vh;overflow:auto;border:1px solid var(--line);
+ border-radius:10px;padding:14px 16px;background:#fbfcfd}
+.transcript p{margin:2px 0;font-size:14.5px;color:#242a31;line-height:1.7}
+.transcript p .ts{color:#9aa3ad;font-size:12.5px;margin-right:8px;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--sub);padding:60px 0}
+.srcline{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+ font-size:12.5px;color:var(--sub);word-break:break-all;line-height:1.6}
+.srcline span{color:#0f766e;user-select:all;-webkit-user-select:all}
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,16px);
+ background:rgba(22,28,32,.94);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:9px;
+ opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{margin-top:36px;text-align:center;color:#9aa3ad;font-size:12.5px;line-height:1.9}
+@media (max-width:600px){
+ .wrap{padding:14px 12px 48px} h1{font-size:20px}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .hero{height:260px}
+ .dbody{padding:16px 15px 20px} .dbody h2{font-size:17.5px}
+ ul.pts li,.lead{font-size:14.5px}
+ .transcript{max-height:none}
+}
+
+.wrap{max-width:820px}
+.share-bar{display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.share-bar a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.share-bar a:hover{text-decoration:underline}
+.note-meta{color:var(--sub);font-size:13.5px;margin:6px 0 18px}
+.transcript p{display:flex;gap:12px;margin:0 0 6px;font-size:14.5px;line-height:1.65}
+.transcript .ts{flex:0 0 44px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.srcline{font-size:12.5px;color:var(--sub);word-break:break-all;margin-top:8px}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<div class="share-bar"><a href="../index.html">← 全部收藏总目录</a></div>
+<div class="hero"><div class="hero-bg" style="background-image:url('../covers/7637820966294963941_460.jpg')"></div><div class="hero-fg" style="background-image:url('../covers/7637820966294963941_460.jpg')"></div></div>
+<article class="panel"><div class="dbody">
+<h2>我的Agent学习路线推荐。</h2>
+<div class="tags"><span>分类 AI+论文</span><span>陈辰👀</span><span>时长 文字视频</span><span>2026-11-23</span></div>
+<div class="sec-t">一句话总结</div><p class="lead">陈辰分享了基于自身经验的Agent学习路线，强调应先理解底层机制再学习框架，并推荐以LangGraph为核心进行实践。</p>
+<div class="sec-t">核心要点</div><ul class="pts"><li>市面上大部分Agent学习路线顺序错误，应先理解底层机制再学习框架，先解决实际问题再通过框架解决。</li><li>学习顺序分为三个阶段：第一阶段吃透Agent底层机制，重点理解Function Calling、ReAct循环、Token和Context Window限制，建议通过编写简单代码手动调用API理解底层逻辑；第二阶段专攻LangGraph，通过图结构设计提升流程设计能力；第三阶段深耕LangGraph的StateGraph、Checkpointer、工具设计、Memory分层、可观测性等核心模块。</li><li>建议选择Text2SQL等可明确评估的场景搭建Agent，通过测试和优化积累项目经验，为面试做准备。</li><li>学习Agent的顺序问题，很多学习路线将Multi-Agent放在太靠前的位置是一个大陷阱，应先掌握单个Agent的Memory管理和错误处理，再学习多Agent的同步状态、消息传递和依赖问题。</li></ul>
+<div class="sec-t">关键信息</div><div class="kv">- 无</div>
+<div class="sec-t">完整文字稿 <span class="cnt">76 段</span></div><div class="transcript"><p>京ICP备16016397号-3</p><p>（京）人服证字〔2026〕第0600005023号</p><p>网上有害信息举报</p><p>充钻石</p><p>客户端</p><p>壁纸</p><p>通知</p><p>消息</p><p>投稿</p><p>我的Agent学习路线推荐</p><p>2026-05-09</p><p>阅读需要8分钟</p><p>先跟大家说点大实话：网上那些Agent学习路线，大部分都是错的。</p><p>不是说里面讲的内容不对，而是学习顺序完全搞反了——就跟你还没学会走路，就逼着你去跑步一样，看着好像学得多、进度快，其实根基一点都不牢，到最后越学越懵，纯属瞎忙活、浪费时间。</p><p>我当初刚开始学Agent的时候，也踩过这个坑，跟风看了好多所谓的“爆款路线”，全都是让你先学框架：先死磕LangChain，再跟风学LangGraph，接着刷AutoGen，最后随便搭个简单的demo，就觉得自己已经会做Agent了。</p><p>结果呢？API背了一大堆，代码也能凑活着跑起来，但一碰到真实的业务场景，立马就崩了——不知道问题出在哪，也不知道怎么修，折腾了好几个星期，最后全白费功夫，越学越有挫败感，差点就放弃了。</p><p>后来我踩了无数坑，结合自己的学习经历，还有面试的时候被面试官问懵的教训，才摸出一条真正能落地、能应对面试、能做出能用的Agent的路线，其实很简单，就是把网上的顺序反过来：先搞明白Agent在实际用的时候，最容易出哪些问题、最容易崩在哪，再去学框架怎么解决这些问题，由内而外慢慢学，这样才不踩坑，效率也最高。</p><p>今天就把我自己亲测有用的路线，毫无保留地分享给大家，希望大家别再走我当初的弯路。</p><p>第一阶段：吃透Agent底层机制，基础打牢再往下走这一步真的太重要了，绝对不能跳过！</p><p>我当初就是急功近利，上来就扎进各种框架里，结果后面遇到一堆莫名其妙的问题：工具调用失败、程序一直循环报错、上下文不够用，越调试越崩溃，最后差点就放弃学Agent了。</p><p>其实这一阶段根本不用搞得太复杂，不用去读那些晦涩难懂的论文，只要搞懂3件事，花一个下午动手实操一下，就能彻底吃透，一点都不难：</p><p>1. Function Calling到底是怎么回事（别想太复杂，就是个工程活儿）。</p><p>很多人都以为，LLM能自己调用工具，其实根本不是这么回事。</p><p>说白了，LLM就是根据你写的schema描述，输出一段符合格式的JSON；然后你写的代码去解析这段JSON，再去调用真正的函数，把结果再塞回对话里，模型再接着思考。</p><p>整个过程，模型全靠你写的schema描述来理解工具，你描述得含糊，它就传错参数；你没说清参数类型，它就传错类型。这不是模型笨，是你没说明白，纯粹是工程上的小问题，不难解决。</p><p>2. ReAct循环是什么，还有它容易出哪些问题。</p><p>现在市面上大部分Agent框架，底层都是ReAct循环，说简单点就是：先想清楚要做什么（Thought）→ 调用工具去做（Action）→ 看一下做的结果（Observation）→ 再接着想下一步，就这么循环往复。只有搞懂这个循环，你才知道Agent为什么会出问题：比如一直重试、停不下来（死循环），比如循环次数太多，上下文装不下（Context爆炸），比如还没拿到关键信息，就以为任务完成了（早停），这些都是我当初实实在在遇到过的坑。</p><p>3. Token和Context Window的限制（这个是硬规矩，绕不开）。</p><p>Agent的上下文不是无限的，比如GPT-4o最多能装128k个token，Qwen系列不一样，有的8k，有的128k。一个ReAct循环跑10轮，每轮都要把思考、调用工具、结果这些内容塞进去，很快就把上下文占满了。一旦占满，模型就会“忘事”，早期的内容记不住，行为就变得乱七八糟，没法控制——这也是为什么，管理Memory（记忆）是做Agent最核心、最头疼的问题之一。</p><p>这里给大家一个实操建议，也是我当初亲测有用的：花一个下午，写一段50行左右的简单Agent，不用任何框架，直接调用OpenAI的API，手动解析Function Calling的返回结果，手动拼messages数组。别小看这50行代码，比你看10篇教程、背20个API都管用，能让你彻底搞懂Agent的底层逻辑，后面学框架的时候，就会轻松很多。</p><p>第二阶段：专攻LangGraph，学会搭能真正用的Agent很多人都会问我，为什么不先学LangChain，反而优先学LangGraph？</p><p>其实很简单，LangChain是个工具集合，功能确实全，但太灵活了，你随便调用API就能跑起来，很容易让你养成“只会用，不会设计”的习惯，它不会逼着你去想，这个流程到底该怎么设计、有哪些边界、会出哪些问题。</p><p>而LangGraph不一样，它的核心就是把Agent的执行过程，做成一张有方向的图——每个节点（Node）就是一个处理逻辑，每条边（Edge）就是从一个节点跳到另一个节点的条件，状态（State）就是贯穿全程的数据容器。</p><p>这种设计，会逼着你在写代码之前，先想清楚三个问题：</p><p>这个Agent有哪些状态？</p><p>从这个节点跳到那个节点，需要什么条件？</p><p>如果执行失败了，该跳回哪里重新来？</p><p>看似麻烦，其实这种“较真”的设计，才是做能真正落地、能用于生产的Agent所需要的——能帮你避开很多流程上的漏洞，让Agent更稳定、更好控制，这也是我为什么推荐大家优先攻LangGraph的原因。</p><p>LangGraph的学习顺序，我也给大家整理好了，照着学，高效不踩坑：</p><p>首先，搞懂StateGraph的三个核心：</p><p>State定义（用TypedDict，把每个字段的类型、用途说清楚，别含糊）、Node（就是纯函数，输入状态，输出更新后的状态，逻辑要简单好复用）、Edge（普通边和条件边，控制流程往哪走）。</p><p>把这三个搞懂，LangGraph的核心能力，你就掌握了90%。</p><p>其次，重点学条件边（Conditional Edge）怎么写。</p><p>这才是Agent“智能”的关键——模型判断任务有没有完成、要不要重试、该调用哪个工具，全靠条件边来实现。</p><p>很多教程都跳过这一块，但我面试的时候，面试官几乎都会问这个问题，这也是区分“会用框架”和“懂框架”的关键，大家一定要重点学。</p><p>最后，搞懂Checkpointer机制（说白了就是状态保存）。</p><p>这是实际用的时候必须面对的问题：Agent跑到一半崩了怎么办？用户中途退出了怎么办？LangGraph的Checkpointer，就是专门解决这个问题的。搞懂它，面试的时候被问到“Agent崩了怎么恢复”，你就能从容回答，轻松加分。</p><p>第三阶段：深耕核心模块，面试的时候能扛住追问只学会LangGraph还不够，真正能拉开差距的，是你对核心模块的理解深度。</p><p>我参加过好几次Agent相关的面试，面试官一定会往深了问三个模块，这也是很多人露馅的地方，大家一定要重点琢磨：</p><p>1. Tool设计（不只是会接API，更要会设计）。很多人只会简单地把第三方API接进来，却不知道怎么设计schema，让模型能精准调用工具，不犯错。</p><p>一个好用的工具描述，就三点：</p><p>一句话说清这个工具能做什么、什么时候该用它、参数说清楚（类型、能填什么值、举个例子）。如果参数有固定选项，一定要把所有选项列出来，别让模型自己瞎猜；工具调用的结果，也别返回一大段乱七八糟的文字，做成结构化的JSON，模型处理起来更稳定，也不容易出错。</p><p>2. Memory分层（最容易加分的模块，也是最容易露馅的）。很多人做Memory，就是把对话历史随便塞进上下文，面试官一问细节，就支支吾吾说不出来了。</p><p>真正能用于生产的Memory，必须分三层：</p><p>① 当前会话的短期记忆（最近几轮对话，直接放进messages，保证能记住当下的内容）；</p><p>② 跨会话的长期记忆（用向量数据库存着，找的时候，既看内容相关度，也看时间，越近的越优先）；</p><p>③ 系统级知识（就是RAG知识库，存一些行业文档、产品规则，和用户的个人记忆分开管，后续更新维护也方便）。</p><p>能把这三层的架构说清楚，再说说每层怎么读、怎么写，面试的时候，你就已经比80%的人强了。</p><p>3. 可观测性（Agent出问题，能快速找到原因）。</p><p>这一点很多人都忽略了，我当初也一样，写的Agent没有日志，只有简单的print语句，一旦出问题，根本不知道在哪错了，只能瞎猜，特别浪费时间。</p><p>实际用的时候，至少要记三件事：每次调用工具的输入输出（加上时间戳，方便回头查）、每个节点的进出状态（加上trace ID，能串起来整个执行过程）、模型调用的token消耗（毕竟要花钱，控制成本很重要）。</p><p>LangSmith是LangGraph官方的工具，专门用来做可观测性的，学LangGraph的时候一起用，养成这个习惯，面试的时候会很加分。</p><p>第四阶段：做一个有数据、能落地的项目，面试的关键这一步，是网上大多数学习路线都没有的，但它直接决定你能不能通过面试，能不能真正学会Agent，大家一定要重视，别偷懒。</p><p>学到第三阶段，很多人的状态都是：概念都懂，demo也能跑通，但面试官一问“你做的Agent效果怎么样”，就瞬间卡壳——因为没有评估标准，不知道自己做的东西到底好不好，也说不出怎么优化，这样面试肯定过不了。</p><p>这一阶段，你就做一件事，很简单：选一个能明确判断对错的场景，比如Text2SQL（输入自然语言问题，输出SQL语句，能不能执行、结果对不对，一眼就能看出来），搭一个Agent，然后测试评估。</p><p>至少要关注三个指标：任务完成率（SQL能执行、结果也对的比例）、工具调用准确率（有没有多余的调用，或者该调用的没调用）、平均耗时（别太慢，不然没用）。</p><p>然后针对性地优化，把这些指标慢慢提上去，每次优化什么、效果怎么样，都记下来。这个过程，就是你简历上最有说服力的项目，也是面试的时候，能跟面试官聊30分钟的核心素材，比你说一百句“我会用LangGraph”都管用。</p><p>给大家举个例子，我见过一个特别有说服力的项目描述，大家可以参考：“用LangGraph做了一个Text2SQL Agent，在Spider数据集上，准确率从一开始的61%，优化到了79%，主要是改进了schema linking的工具设计，还加了一个SQL执行失败后，让模型反思、修正的节点。” 这种描述，面试官能顺着问好多问题，你每个问题都能答上来，通过率肯定高。</p><p>一个大坑：</p><p>Multi-Agent别学太早很多学习路线，把Multi-Agent（多Agent）放得很靠前，其实这是个大陷阱，我当初也差点踩进去。</p><p>如果你连单个Agent的Memory怎么管、出了错怎么处理都没搞明白，就去学多Agent，只会让问题越来越复杂，越学越乱。</p><p>两个Agent之间，怎么同步状态、怎么传递消息、会不会互相依赖、一个出问题了另一个怎么办——这些问题，在你没吃透单个Agent之前，根本搞不懂，上手就是坑，纯属浪费时间。</p><p>我的建议是，先把单个Agent做好，能评估效果、能找到问题、能优化指标，再去碰多Agent，这个顺序，绝对不会错。</p><p>🎁最后，如果你也在学Agent、学大模型，不知道怎么下手，没有系统的资源，也没有靠谱的学习渠道，不用慌。我把自己学Agent、学大模型的时候，整理的全套资料，还有我自己用的系统学习路线，都打包好了——从底层机制、框架实操，到核心模块、项目实战，全都有，希望能帮大家少走很多弯路。观我一下get</p><p>00:02 / 03:10</p><p>举报</p></div>
+<div class="btns"><button class="btn s" id="sbtn">分享这一条</button><button class="btn s" id="vbtn">观看原视频</button><button class="btn g" id="cbtn">复制原视频链接</button></div>
+<div class="srcline">视频链接：https://www.douyin.com/video/7637820966294963941</div>
+<div class="foot">由抖音收藏自动整理 · 笔记原文保存在本机知识库</div>
+</div></article>
+</div>
+<script>window.__URL__="https://www.douyin.com/video/7637820966294963941";window.__PAGE__="n/7637820966294963941.html";</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('vbtn'), cp = document.getElementById('cbtn');
+  var u = window.__URL__ || '';
+  function toast(m){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=m;t.classList.add('on');clearTimeout(window.__tt);
+    window.__tt=setTimeout(function(){t.classList.remove('on');},1800);
+  }
+  function copy(s, tip){
+    var m = tip || '链接已复制';
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){toast(m);},
+        function(){fb(s, m);});
+    } else { fb(s, m); }
+  }
+  function fb(s, tip){
+    var m = tip || '链接已复制';
+    var ta=document.createElement('textarea');ta.value=s;
+    ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast(m);}catch(e){toast('复制失败，请长按链接复制');}
+    document.body.removeChild(ta);
+  }
+  if(btn) btn.addEventListener('click', function(e){
+    e.preventDefault(); if(!u) return;
+    var w=null; try{ w=window.open(u,'_blank'); }catch(err){ w=null; }
+    if(!w){ try{ location.href=u; }catch(e2){ copy(u, '原视频链接已复制，去抖音打开'); } }
+  });
+  if(cp) cp.addEventListener('click', function(e){ e.preventDefault(); copy(u, '原视频链接已复制，去抖音打开'); });
+  var sb = document.getElementById('sbtn');
+  if(sb) sb.addEventListener('click', function(e){
+    e.preventDefault();
+    copy((location.href||'').split('#')[0], '本条分享链接已复制，可直接发到群里');
+  });
+})();
+</script>
+
+</body></html>

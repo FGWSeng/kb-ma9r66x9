@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>如何安装使用reasonix，并且高达99的缓存命中率是如何做到的？</title>
+<meta name="description" content="视频介绍了如何安装和使用Listenix，并详细讲解了其高达99%的缓存命中率是如何实现的。">
+<meta property="og:title" content="如何安装使用reasonix，并且高达99的缓存命中率是如何做到的？">
+<meta property="og:description" content="视频介绍了如何安装和使用Listenix，并详细讲解了其高达99%的缓存命中率是如何实现的。">
+<meta property="og:type" content="article">
+<style>
+:root{
+ --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --sub:#6b7280; --line:#e5e7eb;
+ --accent:#0f766e; --accent-soft:#ecfdf5; --tag:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+header.top{padding:6px 2px 16px}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.4px}
+.meta{color:var(--sub);font-size:14px}
+.stats{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;
+ padding:6px 12px;font-size:13px;cursor:pointer;color:var(--sub);transition:.15s;
+ font-family:inherit;line-height:1.4}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+ display:flex;flex-direction:column;cursor:pointer;transition:.18s;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10);border-color:#d6dde5}
+.thumb{aspect-ratio:16/10;background:#eef1f4 center/cover no-repeat;position:relative}
+.thumb .cat{position:absolute;left:10px;top:10px;background:rgba(15,118,110,.94);color:#fff;
+ font-size:12px;padding:3px 9px;border-radius:6px;letter-spacing:.3px}
+.thumb .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;
+ font-size:12px;padding:2px 7px;border-radius:5px}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card h3{margin:0;font-size:15.5px;line-height:1.45;font-weight:600;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.autor{font-size:12.5px;color:var(--sub)}
+.one{font-size:13.5px;color:#374151;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:4px;font-size:12.5px;color:var(--accent);font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;
+ color:var(--accent);cursor:pointer;background:none;border:0;padding:6px 0;font-weight:600;font-family:inherit}
+.back:hover{opacity:.75}
+.pos{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero{position:relative;height:380px;background:#101418;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:-30px;background:center/cover no-repeat;
+ filter:blur(26px) saturate(1.1);opacity:.5;transform:scale(1.12)}
+.hero-fg{position:absolute;inset:0;background:center/contain no-repeat;z-index:1}
+.dbody{padding:20px 22px 24px}
+.dbody h2{margin:0 0 10px;font-size:20px;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tags span{background:var(--tag);color:#475569;font-size:12.5px;padding:4px 10px;border-radius:7px}
+.sec-t{font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;
+ letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.sec-t::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px}
+.sec-t .cnt{font-weight:500;color:var(--sub);font-size:12px;letter-spacing:0}
+.lead{font-size:15px;color:#242a31;margin:0}
+ul.pts{margin:0;padding-left:0;list-style:none}
+ul.pts li{position:relative;padding-left:20px;margin:8px 0;color:#242a31;font-size:15px}
+ul.pts li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+ border-radius:50%;background:var(--accent);opacity:.55}
+.kv{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;
+ padding:11px 14px;font-size:14px;color:#155e56}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;
+ font-family:inherit;line-height:1.4}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn.g{background:#f3f4f6;color:#374151;border-color:var(--line)}
+.transcript{margin-top:4px;max-height:62vh;overflow:auto;border:1px solid var(--line);
+ border-radius:10px;padding:14px 16px;background:#fbfcfd}
+.transcript p{margin:2px 0;font-size:14.5px;color:#242a31;line-height:1.7}
+.transcript p .ts{color:#9aa3ad;font-size:12.5px;margin-right:8px;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--sub);padding:60px 0}
+.srcline{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+ font-size:12.5px;color:var(--sub);word-break:break-all;line-height:1.6}
+.srcline span{color:#0f766e;user-select:all;-webkit-user-select:all}
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,16px);
+ background:rgba(22,28,32,.94);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:9px;
+ opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{margin-top:36px;text-align:center;color:#9aa3ad;font-size:12.5px;line-height:1.9}
+@media (max-width:600px){
+ .wrap{padding:14px 12px 48px} h1{font-size:20px}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .hero{height:260px}
+ .dbody{padding:16px 15px 20px} .dbody h2{font-size:17.5px}
+ ul.pts li,.lead{font-size:14.5px}
+ .transcript{max-height:none}
+}
+
+.wrap{max-width:820px}
+.share-bar{display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.share-bar a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.share-bar a:hover{text-decoration:underline}
+.note-meta{color:var(--sub);font-size:13.5px;margin:6px 0 18px}
+.transcript p{display:flex;gap:12px;margin:0 0 6px;font-size:14.5px;line-height:1.65}
+.transcript .ts{flex:0 0 44px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.srcline{font-size:12.5px;color:var(--sub);word-break:break-all;margin-top:8px}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<div class="share-bar"><a href="../index.html">← 全部收藏总目录</a></div>
+<div class="hero"><div class="hero-bg" style="background-image:url('../covers/7637167051752448229_460.jpg')"></div><div class="hero-fg" style="background-image:url('../covers/7637167051752448229_460.jpg')"></div></div>
+<article class="panel"><div class="dbody">
+<h2>如何安装使用reasonix，并且高达99的缓存命中率是如何做到的？</h2>
+<div class="tags"><span>分类 AI+论文</span><span>做游戏的小🐟</span><span>时长 10:53</span><span>2026-11-23</span></div>
+<div class="sec-t">一句话总结</div><p class="lead">视频介绍了如何安装和使用Listenix，并详细讲解了其高达99%的缓存命中率是如何实现的。</p>
+<div class="sec-t">核心要点</div><ul class="pts"><li>Listenix的安装步骤，包括安装Node.js环境和启动Listenix。</li><li>Listenix的功能介绍，包括API Key获取、中端和Web支持、后台面板功能等。</li><li>缓存命中率的实现机制，特别是前缀缓存命中的特性及其对成本的影响。</li><li>与其他主流引擎的对比，分析为什么其他引擎无法达到99%的缓存命中率。</li><li>Listenix的省钱策略，如Flash First模型选择、模型压缩和Pro模式的使用。</li></ul>
+<div class="sec-t">关键信息</div><div class="kv">- API Key获取链接：无；- 缓存命中率：高达99%以上；- Token用量：四亿三千五百万个token；- Flash模型价格：不到一百块钱；- Chat对话缓存命中率：60到80左右；- Cherry Studio SDK：重新序列化对话历史，导致缓存失效；- CodeCrafter Codex：为自身能力设计，价格与能力成正比；- Review模式：每个操作都会询问是否执行；- Sigma计算：在所有提示词前面计算sigma；- 哈希定时：绘画一开始就计算哈希值；- Flash First模型：优先使用Flash模型，Pro模型用于复杂问题；- Cloud模型：CodeCrafter使用Sonet，CodeX使用莫兰斯GPT；- 模型压缩：每轮结束自动压缩模型，节省成本；- Pro模式：单轮启用Pro模式，提高问题解决能力；- 平均缓存命中率：97%</div>
+<div class="sec-t">完整文字稿 <span class="cnt">370 段</span></div><div class="transcript"><p><span class="ts">00:00</span>Hello 大家好我是Listenix作者</p><p><span class="ts">00:03</span>今天给大家介绍一下我们这个产品啊</p><p><span class="ts">00:06</span>这个是我们的Guitar Hub所业</p><p><span class="ts">00:10</span>我先教大家怎么去安装我们这个Listenix</p><p><span class="ts">00:14</span>它很简单</p><p><span class="ts">00:15</span>首先你要安装有一个环境</p><p><span class="ts">00:17</span>Node.js的环境</p><p><span class="ts">00:19</span>只需要搜索</p><p><span class="ts">00:21</span>然后getNode.js</p><p><span class="ts">00:23</span>如果你是Windows的就直接在这边安装就行了</p><p><span class="ts">00:26</span>如果你是其他系统的它会自动推荐</p><p><span class="ts">00:29</span>点击完之后会有一个安装的一个</p><p><span class="ts">00:33</span>安装包</p><p><span class="ts">00:37</span>这里可以默认一直点下一步</p><p><span class="ts">00:40</span>就可以了</p><p><span class="ts">00:41</span>我这里已经安装过了就不再接受</p><p><span class="ts">00:44</span>然后接着呢我们可以打开我们的这个CMD</p><p><span class="ts">00:51</span>首先呢我们需要一个项目</p><p><span class="ts">00:53</span>我们可以在</p><p><span class="ts">00:55</span>F盘下面新建一个自己的项目</p><p><span class="ts">00:58</span>我们可以随机取一个叫做Test</p><p><span class="ts">01:00</span>把Test1</p><p><span class="ts">01:04</span>然后在这个CMD里面呢可以进入</p><p><span class="ts">01:11</span>进入到这个F盘的Test1里面</p><p><span class="ts">01:14</span>然后输入我们的这个Listenix启动指令</p><p><span class="ts">01:19</span>这里是我已经</p><p><span class="ts">01:25</span>之前启动过了</p><p><span class="ts">01:27</span>然后正常的启动呢会有一个触实化的界面</p><p><span class="ts">01:30</span>它会引导你去输入你的API Key</p><p><span class="ts">01:33</span>然后如果你不知道API Key在哪里获取的时候呢</p><p><span class="ts">01:36</span>这里上面也有一个链接可以让你去点击</p><p><span class="ts">01:39</span>当你输入这个API Key之后呢</p><p><span class="ts">01:41</span>它就会进入到这个界面</p><p><span class="ts">01:44</span>那这里呢就是有一个web</p><p><span class="ts">01:47</span>我们不仅仅是支持这个中端的</p><p><span class="ts">01:50</span>也支持web的</p><p><span class="ts">01:52</span>点进去之后呢</p><p><span class="ts">01:53</span>Ctrl加左键点进去之后呢</p><p><span class="ts">01:56</span>这里是我们的这个后台</p><p><span class="ts">01:58</span>然后这里的面板呢</p><p><span class="ts">02:00</span>它是一个ty的镜像</p><p><span class="ts">02:02</span>就是你这里写的任何东西</p><p><span class="ts">02:04</span>它在这里都会反馈出来</p><p><span class="ts">02:06</span>比如说我们说你好</p><p><span class="ts">02:09</span>这两边是同步的</p><p><span class="ts">02:11</span>当然你在这里发</p><p><span class="ts">02:12</span>这里也是会同步的</p><p><span class="ts">02:14</span>那这里呢有一些功能</p><p><span class="ts">02:16</span>就是可以看到一些</p><p><span class="ts">02:18</span>以前的计划</p><p><span class="ts">02:19</span>还有一些绘画</p><p><span class="ts">02:20</span>包括你的这个</p><p><span class="ts">02:23</span>运动缓存</p><p><span class="ts">02:24</span>还有包括你的token消耗</p><p><span class="ts">02:26</span>用量</p><p><span class="ts">02:28</span>然后我们这里的话</p><p><span class="ts">02:31</span>是</p><p><span class="ts">02:32</span>当你比较熟悉之后</p><p><span class="ts">02:33</span>你可以再来看这些</p><p><span class="ts">02:35</span>这里是比较深度用的一个地方</p><p><span class="ts">02:37</span>比如说对你的项目的文件进行一个锁影</p><p><span class="ts">02:40</span>可以本地有一个模型给你安装</p><p><span class="ts">02:45</span>然后下面有些mcp</p><p><span class="ts">02:47</span>还有包括scales</p><p><span class="ts">02:48</span>记忆啊 memory</p><p><span class="ts">02:50</span>互可</p><p><span class="ts">02:51</span>其实都是支持的</p><p><span class="ts">02:52</span>包括</p><p><span class="ts">02:54</span>这里有一些设置</p><p><span class="ts">02:56</span>但是这些设置可以都不用改</p><p><span class="ts">02:58</span>然后</p><p><span class="ts">03:00</span>我们可以先</p><p><span class="ts">03:01</span>尝试的做一个项目</p><p><span class="ts">03:03</span>我们比如说做一个</p><p><span class="ts">03:05</span>无子奇项目</p><p><span class="ts">03:07</span>在他做无子奇项目的时候呢</p><p><span class="ts">03:09</span>我可以给大家介绍一下</p><p><span class="ts">03:11</span>就是我们这个</p><p><span class="ts">03:13</span>dipsycam</p><p><span class="ts">03:14</span>就是另一个用户</p><p><span class="ts">03:16</span>用我们这个</p><p><span class="ts">03:18</span>Risnix</p><p><span class="ts">03:19</span>然后他的用量</p><p><span class="ts">03:22</span>这个用量呢</p><p><span class="ts">03:23</span>大家看一下</p><p><span class="ts">03:24</span>他用的非常多</p><p><span class="ts">03:25</span>他用了大概</p><p><span class="ts">03:26</span>四亿三千五百万个token</p><p><span class="ts">03:28</span>对吧</p><p><span class="ts">03:29</span>这是flash</p><p><span class="ts">03:30</span>他大概就是一百块钱不到</p><p><span class="ts">03:33</span>跑了</p><p><span class="ts">03:35</span>他跑了</p><p><span class="ts">03:36</span>他这个跑的用量有点大</p><p><span class="ts">03:38</span>其实用量也大</p><p><span class="ts">03:39</span>正常人不会跑这么大的</p><p><span class="ts">03:40</span>那</p><p><span class="ts">03:41</span>为什么我们这个缓存命中率</p><p><span class="ts">03:43</span>他能达到99%啊</p><p><span class="ts">03:45</span>这个有99%以上啊</p><p><span class="ts">03:47</span>我可以给大家讲一下</p><p><span class="ts">03:49</span>就是我们有一个叫做</p><p><span class="ts">03:50</span>前綴缓存的命中率</p><p><span class="ts">03:52</span>dipsycam</p><p><span class="ts">03:53</span>他有一个API</p><p><span class="ts">03:54</span>有一个特性</p><p><span class="ts">03:55</span>就是你请求开头六杆四节</p><p><span class="ts">03:57</span>如果跟上一次完全一致</p><p><span class="ts">03:58</span>他命中的部分呢</p><p><span class="ts">03:59</span>就会按照定价的10%来击费</p><p><span class="ts">04:01</span>也就是说</p><p><span class="ts">04:02</span>如果你命中了</p><p><span class="ts">04:03</span>他就给你打一折</p><p><span class="ts">04:04</span>这个机制是dipsycam提供的</p><p><span class="ts">04:06</span>那所有的dipsycam</p><p><span class="ts">04:08</span>API的这个扣单都有这个功能</p><p><span class="ts">04:10</span>那为什么大部分扣单命中率</p><p><span class="ts">04:12</span>30到60</p><p><span class="ts">04:13</span>我们可以达到99%呢</p><p><span class="ts">04:15</span>这就要考验这个</p><p><span class="ts">04:17</span>你设计扣单的设计水平了</p><p><span class="ts">04:21</span>他这边还问了我们一些问题啊</p><p><span class="ts">04:24</span>我这个是滚轮</p><p><span class="ts">04:25</span>也可以去控制啊</p><p><span class="ts">04:26</span>比如说他要做一个web</p><p><span class="ts">04:27</span>那么做个web就够了</p><p><span class="ts">04:29</span>回答一下他问题</p><p><span class="ts">04:31</span>接着我们讲</p><p><span class="ts">04:32</span>别人怎么做</p><p><span class="ts">04:33</span>主流的engine一般怎么做的</p><p><span class="ts">04:35</span>为什么他们做不到99%</p><p><span class="ts">04:36</span>第一个就是dipsycam自家的这个chat</p><p><span class="ts">04:38</span>他们的chat</p><p><span class="ts">04:39</span>对话一般都是60到80左右</p><p><span class="ts">04:42</span>但是比如你新开一个绘画</p><p><span class="ts">04:44</span>他的命中率马上就会掉到0</p><p><span class="ts">04:46</span>第二种呢就是</p><p><span class="ts">04:48</span>就是cherry studio这种</p><p><span class="ts">04:50</span>他们有open ai的那种形状的sdk</p><p><span class="ts">04:52</span>每一人对话的历史呢</p><p><span class="ts">04:54</span>都是会重新序列化的</p><p><span class="ts">04:55</span>重新排序</p><p><span class="ts">04:56</span>有时候还会塞个时间戳进去</p><p><span class="ts">04:57</span>他们那个前綴的字节序列就变了</p><p><span class="ts">04:59</span>缓存就废了</p><p><span class="ts">05:00</span>所以他们的一般命中率呢</p><p><span class="ts">05:01</span>可能会更低一些</p><p><span class="ts">05:03</span>然后就是最后一种呢</p><p><span class="ts">05:05</span>就是那个could code</p><p><span class="ts">05:06</span>coulds codex</p><p><span class="ts">05:07</span>这个就比较主流</p><p><span class="ts">05:09</span>我先把这个setup</p><p><span class="ts">05:10</span>给他继续跑</p><p><span class="ts">05:14</span>然后他们呢就是</p><p><span class="ts">05:16</span>他们不是为dipsycam缓存设计的</p><p><span class="ts">05:18</span>他们是为自己的could</p><p><span class="ts">05:20</span>和gbt能力设计的</p><p><span class="ts">05:21</span>他们的价格</p><p><span class="ts">05:23</span>能力呢就是能力有一些</p><p><span class="ts">05:25</span>成本是结果</p><p><span class="ts">05:26</span>所以我们是反过来的</p><p><span class="ts">05:27</span>我们是成本是约束条件</p><p><span class="ts">05:29</span>我们的能力呢</p><p><span class="ts">05:30</span>只会在这个约束下最大化</p><p><span class="ts">05:32</span>所以这是产品定位的区别</p><p><span class="ts">05:33</span>不是说谁好谁坏</p><p><span class="ts">05:36</span>再同意一下</p><p><span class="ts">05:37</span>因为我们现在选择是review模式</p><p><span class="ts">05:39</span>review模式就是</p><p><span class="ts">05:40</span>他每操作的</p><p><span class="ts">05:41</span>就是每一个操作都会问我们</p><p><span class="ts">05:43</span>要不要这么做</p><p><span class="ts">05:44</span>我们可以</p><p><span class="ts">05:45</span>也可以关掉</p><p><span class="ts">05:46</span>我们比如说shift大家tap</p><p><span class="ts">05:48</span>切换一下</p><p><span class="ts">05:49</span>切换到out to</p><p><span class="ts">05:50</span>就让自己写</p><p><span class="ts">05:51</span>我们就不管了</p><p><span class="ts">05:53</span>然后我们具体做的哪些事呢</p><p><span class="ts">05:55</span>我们其实就是</p><p><span class="ts">05:57</span>在所有提示词前面</p><p><span class="ts">05:59</span>计算一下他的sigma</p><p><span class="ts">06:00</span>然后把他的</p><p><span class="ts">06:01</span>绘画一开始就会计算一下</p><p><span class="ts">06:03</span>哈希一下定时</p><p><span class="ts">06:04</span>所以在这个绘画里面</p><p><span class="ts">06:06</span>前面的这一段的字节</p><p><span class="ts">06:07</span>都是不变的长量</p><p><span class="ts">06:08</span>听起来是很简单</p><p><span class="ts">06:09</span>但是很多框架都做不到</p><p><span class="ts">06:11</span>因为他们很像动态</p><p><span class="ts">06:12</span>去根据对话的状态</p><p><span class="ts">06:13</span>去调整system plume</p><p><span class="ts">06:14</span>这样看起来会更聪明</p><p><span class="ts">06:15</span>但是缓存会当场去失效</p><p><span class="ts">06:17</span>所以我们选择不动它</p><p><span class="ts">06:19</span>第二个就是append the road only</p><p><span class="ts">06:21</span>就只追加不改写</p><p><span class="ts">06:22</span>他每一个对话的时候</p><p><span class="ts">06:24</span>我们都是指望日治的</p><p><span class="ts">06:25</span>莫为加东西</p><p><span class="ts">06:26</span>不经意重新排列</p><p><span class="ts">06:28</span>也不会去修改它</p><p><span class="ts">06:29</span>就保持他前面的字节保持不动</p><p><span class="ts">06:32</span>那这条听起来是很简单</p><p><span class="ts">06:34</span>但是要实现起来</p><p><span class="ts">06:36</span>就比较麻烦</p><p><span class="ts">06:37</span>你跑久了肯定会很想</p><p><span class="ts">06:38</span>清理一下历史</p><p><span class="ts">06:39</span>让上席王好看一点</p><p><span class="ts">06:40</span>那一清理缓存就完蛋了对吧</p><p><span class="ts">06:43</span>后面还有一个就是</p><p><span class="ts">06:46</span>RE的思考</p><p><span class="ts">06:47</span>我们生到V4之后就有Thinking</p><p><span class="ts">06:49</span>它这种推理模型</p><p><span class="ts">06:51</span>它会输出一大堆的</p><p><span class="ts">06:52</span>Visualment content</p><p><span class="ts">06:54</span>就是那种</p><p><span class="ts">06:56</span>用过的都知道</p><p><span class="ts">06:57</span>它会有自己推理的一个</p><p><span class="ts">06:59</span>可以看到</p><p><span class="ts">07:00</span>但是它不是作为一个</p><p><span class="ts">07:02</span>主要输出的</p><p><span class="ts">07:03</span>然后它有一些框架</p><p><span class="ts">07:04</span>就会把这个东西塞回去</p><p><span class="ts">07:06</span>这样就会让Angry的记得自己</p><p><span class="ts">07:08</span>想过什么</p><p><span class="ts">07:09</span>那我们会把这个东西</p><p><span class="ts">07:10</span>隔离在一个新的区域里面</p><p><span class="ts">07:12</span>每一轮结束的话就清空了</p><p><span class="ts">07:14</span>然后我们会通过一个</p><p><span class="ts">07:15</span>叫思维提取的模块</p><p><span class="ts">07:17</span>然后去把它</p><p><span class="ts">07:18</span>要用的时候就拿出来</p><p><span class="ts">07:20</span>我们会把它压缩成一个</p><p><span class="ts">07:21</span>结构化的一个小块</p><p><span class="ts">07:23</span>然后最佳进锣格里面</p><p><span class="ts">07:25</span>原始的那个思考链</p><p><span class="ts">07:27</span>就不会进缓存了</p><p><span class="ts">07:30</span>这里它要启动一个</p><p><span class="ts">07:32</span>短口去跑起来</p><p><span class="ts">07:34</span>我们拍摄</p><p><span class="ts">07:35</span>没有</p><p><span class="ts">07:36</span>它肯定想别的办法</p><p><span class="ts">07:39</span>然后除了缓存</p><p><span class="ts">07:40</span>我们还有什么省钱呢</p><p><span class="ts">07:41</span>然后比如说</p><p><span class="ts">07:42</span>就成本控制的一个东西</p><p><span class="ts">07:44</span>就比如说</p><p><span class="ts">07:45</span>Flash first</p><p><span class="ts">07:46</span>就是U先Flash模型</p><p><span class="ts">07:48</span>然后Pro的话</p><p><span class="ts">07:49</span>因为比较贵</p><p><span class="ts">07:50</span>那90%其实Coding</p><p><span class="ts">07:52</span>Flash够了</p><p><span class="ts">07:53</span>那Cloud</p><p><span class="ts">07:54</span>比如说CodeCode</p><p><span class="ts">07:55</span>以前都是用Sonet对吧</p><p><span class="ts">07:57</span>CodeCode也是Sonet</p><p><span class="ts">07:58</span>然后CodeX 莫兰斯GPT</p><p><span class="ts">08:00</span>都是那种</p><p><span class="ts">08:01</span>稍微便宜一点的模型</p><p><span class="ts">08:02</span>那每一轮结束</p><p><span class="ts">08:03</span>就是有差不多3000个Token</p><p><span class="ts">08:05</span>返回就会自动压缩</p><p><span class="ts">08:07</span>模型用的时候就有个完整内容</p><p><span class="ts">08:09</span>用完就只剩下摘要</p><p><span class="ts">08:10</span>如果下一轮还需要的话</p><p><span class="ts">08:12</span>就重新Bitfile</p><p><span class="ts">08:13</span>总比拖着这个</p><p><span class="ts">08:15</span>12K的这个Tour跑起来</p><p><span class="ts">08:17</span>会便宜很多</p><p><span class="ts">08:19</span>如果碰到难题</p><p><span class="ts">08:20</span>你可以单轮启用这个Pro模式</p><p><span class="ts">08:22</span>跑一下</p><p><span class="ts">08:23</span>跑完就自动回收</p><p><span class="ts">08:24</span>但这样肯定会</p><p><span class="ts">08:26</span>单次的这种缓存命中</p><p><span class="ts">08:28</span>肯定会降下来</p><p><span class="ts">08:31</span>但是可以更好的解决问题</p><p><span class="ts">08:33</span>那这里他说他设计好了</p><p><span class="ts">08:35</span>那我们可以去看一下</p><p><span class="ts">08:39</span>跑起来了</p><p><span class="ts">08:40</span>我看看他运行怎么样</p><p><span class="ts">08:41</span>我随便玩一下</p><p><span class="ts">08:44</span>我感觉他设计还可以</p><p><span class="ts">08:46</span>对吧</p><p><span class="ts">08:48</span>我直接去</p><p><span class="ts">08:49</span>黑旗舍</p><p><span class="ts">08:50</span>从一开始没问题</p><p><span class="ts">08:52</span>我们来一下白旗的剩一把</p><p><span class="ts">08:56</span>白旗或剩</p><p><span class="ts">08:58</span>那我们这个</p><p><span class="ts">09:00</span>如果说这个时候</p><p><span class="ts">09:01</span>你想看一下这个</p><p><span class="ts">09:03</span>后台Teshboard</p><p><span class="ts">09:05</span>这样</p><p><span class="ts">09:06</span>然后他会有一个提示</p><p><span class="ts">09:07</span>你可以点击这个</p><p><span class="ts">09:08</span>进入外部后台</p><p><span class="ts">09:10</span>在这里可以看到效果</p><p><span class="ts">09:12</span>它这里展示的是一样的</p><p><span class="ts">09:14</span>可能会好看一点</p><p><span class="ts">09:18</span>我们这里可以看到</p><p><span class="ts">09:19</span>他在后台跑了一个Job</p><p><span class="ts">09:20</span>所以我们才能</p><p><span class="ts">09:22</span>预览出来这个游戏</p><p><span class="ts">09:24</span>如果他没跑这个</p><p><span class="ts">09:25</span>Job的话</p><p><span class="ts">09:26</span>你在这里是</p><p><span class="ts">09:27</span>看不到这个游戏的</p><p><span class="ts">09:29</span>那我们可以把它停掉</p><p><span class="ts">09:31</span>停掉的话</p><p><span class="ts">09:32</span>我们先可以看Jobs</p><p><span class="ts">09:33</span>就是跑了哪些任务</p><p><span class="ts">09:34</span>他跑了两个任务</p><p><span class="ts">09:35</span>第一个任务是失败了</p><p><span class="ts">09:37</span>然后第二个任务是成功了</p><p><span class="ts">09:38</span>这个是成功了</p><p><span class="ts">09:39</span>那我们可以把它杀掉</p><p><span class="ts">09:41</span>Q</p><p><span class="ts">09:42</span>第二个</p><p><span class="ts">09:43</span>他是第二个</p><p><span class="ts">09:45</span>他正在停止</p><p><span class="ts">09:47</span>停止了</p><p><span class="ts">09:48</span>停止了后</p><p><span class="ts">09:49</span>这边就没有那个东西了</p><p><span class="ts">09:50</span>那当然了</p><p><span class="ts">09:51</span>这个网页在刷新的时候</p><p><span class="ts">09:53</span>他就打不开了</p><p><span class="ts">09:55</span>就无法访问了</p><p><span class="ts">09:57</span>那整个流程就是这样</p><p><span class="ts">09:58</span>就是你想做什么</p><p><span class="ts">09:59</span>都可以跟ARG沟通</p><p><span class="ts">10:01</span>我们这里的缓存</p><p><span class="ts">10:02</span>他基本上打到了百分百</p><p><span class="ts">10:04</span>就是基本上全命中了</p><p><span class="ts">10:06</span>没有什么没有命中的</p><p><span class="ts">10:08</span>然后你可以在后台</p><p><span class="ts">10:09</span>可以看得到这个</p><p><span class="ts">10:10</span>想请</p><p><span class="ts">10:13</span>我们可以在这盖栏里面</p><p><span class="ts">10:14</span>可以看到</p><p><span class="ts">10:15</span>因为我刚刚还</p><p><span class="ts">10:16</span>之前还对话过</p><p><span class="ts">10:17</span>其他东西</p><p><span class="ts">10:18</span>平均下来</p><p><span class="ts">10:19</span>可以达到97%</p><p><span class="ts">10:21</span>还是非常高的</p><p><span class="ts">10:22</span>因为我们第一轮</p><p><span class="ts">10:24</span>聊天的时候</p><p><span class="ts">10:25</span>他肯定是比较低的</p><p><span class="ts">10:26</span>他是后面慢慢的</p><p><span class="ts">10:27</span>就会增高</p><p><span class="ts">10:28</span>就是一轮比一轮高</p><p><span class="ts">10:32</span>那我们今天就介绍到这</p><p><span class="ts">10:34</span>欢迎大家来使用我们这个</p><p><span class="ts">10:36</span>Listening</p><p><span class="ts">10:37</span>如果你有什么问题</p><p><span class="ts">10:38</span>或者反馈</p><p><span class="ts">10:39</span>都可以来我们的Github</p><p><span class="ts">10:40</span>上提这个问题</p><p><span class="ts">10:42</span>我都非常的乐意去</p><p><span class="ts">10:45</span>比如说你们要发PR</p><p><span class="ts">10:46</span>什么的</p><p><span class="ts">10:47</span>我都会乐意去合并</p><p><span class="ts">10:48</span>或者提出一些我的建议</p><p><span class="ts">10:49</span>要去改进一下</p><p><span class="ts">10:51</span>好 谢谢大家</p></div>
+<div class="btns"><button class="btn s" id="sbtn">分享这一条</button><button class="btn s" id="vbtn">观看原视频</button><button class="btn g" id="cbtn">复制原视频链接</button></div>
+<div class="srcline">视频链接：https://www.douyin.com/video/7637167051752448229</div>
+<div class="foot">由抖音收藏自动整理 · 笔记原文保存在本机知识库</div>
+</div></article>
+</div>
+<script>window.__URL__="https://www.douyin.com/video/7637167051752448229";window.__PAGE__="n/7637167051752448229.html";</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('vbtn'), cp = document.getElementById('cbtn');
+  var u = window.__URL__ || '';
+  function toast(m){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=m;t.classList.add('on');clearTimeout(window.__tt);
+    window.__tt=setTimeout(function(){t.classList.remove('on');},1800);
+  }
+  function copy(s, tip){
+    var m = tip || '链接已复制';
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){toast(m);},
+        function(){fb(s, m);});
+    } else { fb(s, m); }
+  }
+  function fb(s, tip){
+    var m = tip || '链接已复制';
+    var ta=document.createElement('textarea');ta.value=s;
+    ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast(m);}catch(e){toast('复制失败，请长按链接复制');}
+    document.body.removeChild(ta);
+  }
+  if(btn) btn.addEventListener('click', function(e){
+    e.preventDefault(); if(!u) return;
+    var w=null; try{ w=window.open(u,'_blank'); }catch(err){ w=null; }
+    if(!w){ try{ location.href=u; }catch(e2){ copy(u, '原视频链接已复制，去抖音打开'); } }
+  });
+  if(cp) cp.addEventListener('click', function(e){ e.preventDefault(); copy(u, '原视频链接已复制，去抖音打开'); });
+  var sb = document.getElementById('sbtn');
+  if(sb) sb.addEventListener('click', function(e){
+    e.preventDefault();
+    copy((location.href||'').split('#')[0], '本条分享链接已复制，可直接发到群里');
+  });
+})();
+</script>
+
+</body></html>

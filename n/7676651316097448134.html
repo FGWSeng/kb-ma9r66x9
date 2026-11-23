@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>慎用不等式的性质（为啥你行我不行）【辨析习题】</title>
+<meta name="description" content="视频通过辨析一道不等式习题，讲解了在解题过程中如何正确使用不等式性质，并强调了考虑限制条件和变量关联性的重要性。">
+<meta property="og:title" content="慎用不等式的性质（为啥你行我不行）【辨析习题】">
+<meta property="og:description" content="视频通过辨析一道不等式习题，讲解了在解题过程中如何正确使用不等式性质，并强调了考虑限制条件和变量关联性的重要性。">
+<meta property="og:type" content="article">
+<style>
+:root{
+ --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --sub:#6b7280; --line:#e5e7eb;
+ --accent:#0f766e; --accent-soft:#ecfdf5; --tag:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+header.top{padding:6px 2px 16px}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.4px}
+.meta{color:var(--sub);font-size:14px}
+.stats{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;
+ padding:6px 12px;font-size:13px;cursor:pointer;color:var(--sub);transition:.15s;
+ font-family:inherit;line-height:1.4}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+ display:flex;flex-direction:column;cursor:pointer;transition:.18s;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10);border-color:#d6dde5}
+.thumb{aspect-ratio:16/10;background:#eef1f4 center/cover no-repeat;position:relative}
+.thumb .cat{position:absolute;left:10px;top:10px;background:rgba(15,118,110,.94);color:#fff;
+ font-size:12px;padding:3px 9px;border-radius:6px;letter-spacing:.3px}
+.thumb .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;
+ font-size:12px;padding:2px 7px;border-radius:5px}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card h3{margin:0;font-size:15.5px;line-height:1.45;font-weight:600;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.autor{font-size:12.5px;color:var(--sub)}
+.one{font-size:13.5px;color:#374151;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:4px;font-size:12.5px;color:var(--accent);font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;
+ color:var(--accent);cursor:pointer;background:none;border:0;padding:6px 0;font-weight:600;font-family:inherit}
+.back:hover{opacity:.75}
+.pos{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero{position:relative;height:380px;background:#101418;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:-30px;background:center/cover no-repeat;
+ filter:blur(26px) saturate(1.1);opacity:.5;transform:scale(1.12)}
+.hero-fg{position:absolute;inset:0;background:center/contain no-repeat;z-index:1}
+.dbody{padding:20px 22px 24px}
+.dbody h2{margin:0 0 10px;font-size:20px;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tags span{background:var(--tag);color:#475569;font-size:12.5px;padding:4px 10px;border-radius:7px}
+.sec-t{font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;
+ letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.sec-t::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px}
+.sec-t .cnt{font-weight:500;color:var(--sub);font-size:12px;letter-spacing:0}
+.lead{font-size:15px;color:#242a31;margin:0}
+ul.pts{margin:0;padding-left:0;list-style:none}
+ul.pts li{position:relative;padding-left:20px;margin:8px 0;color:#242a31;font-size:15px}
+ul.pts li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+ border-radius:50%;background:var(--accent);opacity:.55}
+.kv{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;
+ padding:11px 14px;font-size:14px;color:#155e56}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;
+ font-family:inherit;line-height:1.4}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn.g{background:#f3f4f6;color:#374151;border-color:var(--line)}
+.transcript{margin-top:4px;max-height:62vh;overflow:auto;border:1px solid var(--line);
+ border-radius:10px;padding:14px 16px;background:#fbfcfd}
+.transcript p{margin:2px 0;font-size:14.5px;color:#242a31;line-height:1.7}
+.transcript p .ts{color:#9aa3ad;font-size:12.5px;margin-right:8px;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--sub);padding:60px 0}
+.srcline{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+ font-size:12.5px;color:var(--sub);word-break:break-all;line-height:1.6}
+.srcline span{color:#0f766e;user-select:all;-webkit-user-select:all}
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,16px);
+ background:rgba(22,28,32,.94);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:9px;
+ opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{margin-top:36px;text-align:center;color:#9aa3ad;font-size:12.5px;line-height:1.9}
+@media (max-width:600px){
+ .wrap{padding:14px 12px 48px} h1{font-size:20px}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .hero{height:260px}
+ .dbody{padding:16px 15px 20px} .dbody h2{font-size:17.5px}
+ ul.pts li,.lead{font-size:14.5px}
+ .transcript{max-height:none}
+}
+
+.wrap{max-width:820px}
+.share-bar{display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.share-bar a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.share-bar a:hover{text-decoration:underline}
+.note-meta{color:var(--sub);font-size:13.5px;margin:6px 0 18px}
+.transcript p{display:flex;gap:12px;margin:0 0 6px;font-size:14.5px;line-height:1.65}
+.transcript .ts{flex:0 0 44px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.srcline{font-size:12.5px;color:var(--sub);word-break:break-all;margin-top:8px}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<div class="share-bar"><a href="../index.html">← 全部收藏总目录</a></div>
+<div class="hero"><div class="hero-bg" style="background-image:url('../covers/7676651316097448134_460.jpg')"></div><div class="hero-fg" style="background-image:url('../covers/7676651316097448134_460.jpg')"></div></div>
+<article class="panel"><div class="dbody">
+<h2>慎用不等式的性质（为啥你行我不行）【辨析习题】</h2>
+<div class="tags"><span>分类 考研</span><span>小明   定义重构解题体系</span><span>时长 6:57</span><span>2026-11-23</span></div>
+<div class="sec-t">一句话总结</div><p class="lead">视频通过辨析一道不等式习题，讲解了在解题过程中如何正确使用不等式性质，并强调了考虑限制条件和变量关联性的重要性。</p>
+<div class="sec-t">核心要点</div><ul class="pts"><li>不等式性质在使用时需考虑限制条件和变量是否关联，否则可能导致错误。</li><li>解题时应深入思考每一步的逻辑，而非盲目跟随答案。</li><li>关联变量（如s和y相互关联）在应用不等式性质时需谨慎，可能需要使用线性规划等方法。</li></ul>
+<div class="sec-t">关键信息</div><div class="kv">- 无</div>
+<div class="sec-t">完整文字稿 <span class="cnt">246 段</span></div><div class="transcript"><p><span class="ts">00:00</span>这恶心题我是一点都不想讲</p><p><span class="ts">00:02</span>但是有人问到过了</p><p><span class="ts">00:05</span>他是怎么问的啊</p><p><span class="ts">00:06</span>他把他的过程写在这儿啊</p><p><span class="ts">00:09</span>他说这个方式一为什么是错的</p><p><span class="ts">00:12</span>这方式二为什么是对的</p><p><span class="ts">00:15</span>我问他我说那你怎么知道他是错的</p><p><span class="ts">00:17</span>他是对的</p><p><span class="ts">00:18</span>他说答案是还专门给了个错误讲解就是他</p><p><span class="ts">00:22</span>然后呢大家说他是错的</p><p><span class="ts">00:23</span>他是对的</p><p><span class="ts">00:25</span>而为什么呢</p><p><span class="ts">00:26</span>他说这个没考虑限制条件</p><p><span class="ts">00:28</span>这个考虑了</p><p><span class="ts">00:30</span>但是我就想不明白啊</p><p><span class="ts">00:32</span>他为什么考虑了</p><p><span class="ts">00:33</span>他为什么没考虑啊</p><p><span class="ts">00:34</span>我感觉都考虑了</p><p><span class="ts">00:36</span>好他把这个问题问我</p><p><span class="ts">00:38</span>我给他的回复</p><p><span class="ts">00:39</span>其实就两个字刚开始</p><p><span class="ts">00:40</span>我说不考</p><p><span class="ts">00:41</span>新高考现在不考</p><p><span class="ts">00:44</span>那他就问</p><p><span class="ts">00:46</span>那不考为啥我们遇到这个题</p><p><span class="ts">00:48</span>我又回答我说不考</p><p><span class="ts">00:50</span>他说老师这个东西困扰着</p><p><span class="ts">00:51</span>我想搞明白</p><p><span class="ts">00:53</span>既然话说到这个份上了</p><p><span class="ts">00:54</span>那我就分享一下我个人见解</p><p><span class="ts">00:57</span>我再说一下啊</p><p><span class="ts">00:58</span>分享一下我个人见解</p><p><span class="ts">01:00</span>大家可以作为参考</p><p><span class="ts">01:02</span>说不定可以解决你这个困谎啊</p><p><span class="ts">01:04</span>来我们看一下他作题的思考</p><p><span class="ts">01:07</span>他是怎么做出来的</p><p><span class="ts">01:08</span>给了一个s加 y 的范围</p><p><span class="ts">01:10</span>给了一个s减 y 的范围</p><p><span class="ts">01:11</span>求3s加2y 的取之范围</p><p><span class="ts">01:13</span>我先模仿他的这个错过做法</p><p><span class="ts">01:16</span>我的模仿</p><p><span class="ts">01:17</span>他说你看s加 y</p><p><span class="ts">01:18</span>大于-1小于4</p><p><span class="ts">01:20</span>s减 y 大于2小于3</p><p><span class="ts">01:22</span>通过不等式的性质</p><p><span class="ts">01:25</span>我把两个一加</p><p><span class="ts">01:25</span>哎</p><p><span class="ts">01:26</span>2s大于1小于7</p><p><span class="ts">01:27</span>没错吧</p><p><span class="ts">01:28</span>没错</p><p><span class="ts">01:29</span>成一个3</p><p><span class="ts">01:30</span>也没错</p><p><span class="ts">01:30</span>为啥我要凑凑3x</p><p><span class="ts">01:32</span>也没错</p><p><span class="ts">01:34</span>然后呢我还要凑凑这个y</p><p><span class="ts">01:36</span>我我先给1</p><p><span class="ts">01:38</span>成一个-1</p><p><span class="ts">01:40</span>给2成一个-1啊</p><p><span class="ts">01:41</span>给2成一个-1</p><p><span class="ts">01:43</span>变成了 y 减 x</p><p><span class="ts">01:44</span>有变号吗</p><p><span class="ts">01:45</span>大于-3小于-2</p><p><span class="ts">01:46</span>然后再给他成了2</p><p><span class="ts">01:48</span>哎</p><p><span class="ts">01:48</span>把2y 的范围做出来了</p><p><span class="ts">01:50</span>把3x 的范围做出来了</p><p><span class="ts">01:51</span>两个一加</p><p><span class="ts">01:52</span>哎我每一步都是合理的呀</p><p><span class="ts">01:54</span>我没错呀</p><p><span class="ts">01:55</span>为什么答案说我是错的</p><p><span class="ts">01:57</span>他成什么</p><p><span class="ts">01:58</span>啊先放在这</p><p><span class="ts">02:00</span>我们先看这个</p><p><span class="ts">02:01</span>方式二是怎么想的</p><p><span class="ts">02:03</span>方式二呢</p><p><span class="ts">02:04</span>他的想法是把s加 y 看整体</p><p><span class="ts">02:06</span>把x 减 y 也看整个整体</p><p><span class="ts">02:09</span>然后他接下来把3x 加 y</p><p><span class="ts">02:12</span>看成多少个x 加 y</p><p><span class="ts">02:14</span>和多少个x 减 y 组成</p><p><span class="ts">02:15</span>我们说过了</p><p><span class="ts">02:16</span>根据数字的认识</p><p><span class="ts">02:18</span>是不是它是</p><p><span class="ts">02:19</span>里面既还有x 加 y 也还有x 减 y</p><p><span class="ts">02:22</span>但是不知道几个</p><p><span class="ts">02:23</span>不知道几个的话</p><p><span class="ts">02:24</span>我们就可以假设嘛</p><p><span class="ts">02:25</span>假设它有 m 跟 s 加 y</p><p><span class="ts">02:27</span>和 n 跟 s 减 y 组成</p><p><span class="ts">02:28</span>因为你知道它有</p><p><span class="ts">02:29</span>不知道有几个</p><p><span class="ts">02:31</span>这么你能想到设为这样的方法</p><p><span class="ts">02:33</span>然后他这样一凑之后</p><p><span class="ts">02:36</span>啊得到了</p><p><span class="ts">02:36</span>这是个 m 加 n 跟 s</p><p><span class="ts">02:38</span>n m 减 n 个 y</p><p><span class="ts">02:40</span>然后一共是三个 s 两个 y 嘛</p><p><span class="ts">02:41</span>所以 m 加 n 等三</p><p><span class="ts">02:42</span>m 减 n 等二</p><p><span class="ts">02:44</span>结出来</p><p><span class="ts">02:45</span>结出来之后呢</p><p><span class="ts">02:46</span>就是二分之五个 x 加 y 加</p><p><span class="ts">02:47</span>二分之一个 s 减 y</p><p><span class="ts">02:49</span>上面这草稿不需要在这个卷床出现</p><p><span class="ts">02:52</span>然后他得到了 s 加 y</p><p><span class="ts">02:54</span>的</p><p><span class="ts">02:54</span>由 s 加 y 的范围</p><p><span class="ts">02:56</span>得到了二分之五 s 加 y 的关系</p><p><span class="ts">02:58</span>由 s 减 y 的范围得到了</p><p><span class="ts">03:00</span>二分之一 s 减 y 的关系</p><p><span class="ts">03:02</span>然后呢</p><p><span class="ts">03:02</span>这来一家</p><p><span class="ts">03:05</span>就是二分之五 s 加 y</p><p><span class="ts">03:06</span>加二分之一 s 减 y 的范围</p><p><span class="ts">03:08</span>求出来了</p><p><span class="ts">03:09</span>他说这是对的</p><p><span class="ts">03:11</span>哎</p><p><span class="ts">03:12</span>他说这个考虑限制条件了</p><p><span class="ts">03:13</span>这个没考虑限制条件</p><p><span class="ts">03:15</span>我咋没考虑</p><p><span class="ts">03:16</span>我两个块用到我没考虑</p><p><span class="ts">03:18</span>啊</p><p><span class="ts">03:19</span>我哪没考虑了</p><p><span class="ts">03:20</span>我两个块用的</p><p><span class="ts">03:21</span>我用这两条件</p><p><span class="ts">03:22</span>这条件本身就限制了</p><p><span class="ts">03:24</span>那你这样用就行</p><p><span class="ts">03:25</span>我这样用就不想了</p><p><span class="ts">03:27</span>这明显不好道理啊</p><p><span class="ts">03:28</span>你能行</p><p><span class="ts">03:29</span>我敢用我用就行</p><p><span class="ts">03:32</span>我就这样感觉了</p><p><span class="ts">03:34</span>那到底问题出在哪</p><p><span class="ts">03:36</span>我们人间去想</p><p><span class="ts">03:37</span>我们用了哪一个性质</p><p><span class="ts">03:39</span>看一定要去看</p><p><span class="ts">03:40</span>我想给大家讲的是思考问题的过程</p><p><span class="ts">03:43</span>那又想用哪个性质啊</p><p><span class="ts">03:44</span>我们用的性质是这个</p><p><span class="ts">03:51</span>a 大于 b</p><p><span class="ts">03:52</span>c 大于 d</p><p><span class="ts">03:55</span>推出 a 加 c 大于 b 加 d</p><p><span class="ts">04:00</span>好</p><p><span class="ts">04:00</span>这是我们用的性质</p><p><span class="ts">04:02</span>现在我们认为去思考一个问题啊</p><p><span class="ts">04:04</span>我们在研究这个性质的过程中</p><p><span class="ts">04:08</span>a</p><p><span class="ts">04:08</span>c</p><p><span class="ts">04:10</span>它是不关联的变量</p><p><span class="ts">04:13</span>书上从来没有提关联变量啊</p><p><span class="ts">04:14</span>但有人说没说就所有都可以</p><p><span class="ts">04:17</span>数学谨慎的一点啊</p><p><span class="ts">04:18</span>他没说是关联变量</p><p><span class="ts">04:20</span>意思是说</p><p><span class="ts">04:21</span>在正常情况下</p><p><span class="ts">04:22</span>我们只能研究非关联变量</p><p><span class="ts">04:27</span>哎</p><p><span class="ts">04:27</span>你看这俩是关联的</p><p><span class="ts">04:29</span>按理来说</p><p><span class="ts">04:30</span>这个不等式的性质就不能用</p><p><span class="ts">04:35</span>你用就是错的</p><p><span class="ts">04:36</span>你从这一步到这一步就是错的</p><p><span class="ts">04:38</span>那同样的道理</p><p><span class="ts">04:39</span>他这样做也是错的</p><p><span class="ts">04:43</span>那老师</p><p><span class="ts">04:44</span>那答案为什么正确</p><p><span class="ts">04:45</span>好</p><p><span class="ts">04:46</span>这个方</p><p><span class="ts">04:46</span>这个问题问得好</p><p><span class="ts">04:48</span>数学中理论错误</p><p><span class="ts">04:51</span>答案也有可能正确</p><p><span class="ts">04:54</span>当然啊</p><p><span class="ts">04:55</span>这个理论是可以证明正确的</p><p><span class="ts">04:58</span>但是可以证明正确的</p><p><span class="ts">04:59</span>但是</p><p><span class="ts">05:01</span>数学中这个不能用</p><p><span class="ts">05:03</span>你不能说你这个方法是</p><p><span class="ts">05:04</span>你这个是用的这个方法</p><p><span class="ts">05:07</span>你必须你想用的话</p><p><span class="ts">05:08</span>你要证明才是对的</p><p><span class="ts">05:09</span>就关联变量</p><p><span class="ts">05:11</span>而所以说</p><p><span class="ts">05:12</span>你但凡用这种方法</p><p><span class="ts">05:15</span>你说这种方法能用性</p><p><span class="ts">05:16</span>这个不能用性质</p><p><span class="ts">05:17</span>这样的解释</p><p><span class="ts">05:18</span>谁都理解不了</p><p><span class="ts">05:19</span>他明显</p><p><span class="ts">05:20</span>两个用的是同一个东西</p><p><span class="ts">05:22</span>所以说</p><p><span class="ts">05:24</span>为什么是错的</p><p><span class="ts">05:25</span>因为人家没说可以是关联变量</p><p><span class="ts">05:28</span>你用来关联变量</p><p><span class="ts">05:29</span>其实这个也是错的</p><p><span class="ts">05:32</span>从不同的答案</p><p><span class="ts">05:33</span>从逻辑来看</p><p><span class="ts">05:34</span>数学中</p><p><span class="ts">05:35</span>他的思考逻辑是错的</p><p><span class="ts">05:37</span>我没有说他这个答案是错的</p><p><span class="ts">05:38</span>他思考逻辑是错的</p><p><span class="ts">05:41</span>对于关联变量</p><p><span class="ts">05:42</span>之前我们是</p><p><span class="ts">05:43</span>就是在</p><p><span class="ts">05:44</span>我们</p><p><span class="ts">05:45</span>我们是</p><p><span class="ts">05:46</span>我陕西地区</p><p><span class="ts">05:47</span>在我们这个地区</p><p><span class="ts">05:48</span>这个用北市大板的时候</p><p><span class="ts">05:50</span>对于关联变量</p><p><span class="ts">05:51</span>有专门的方法</p><p><span class="ts">05:52</span>叫做线性规划</p><p><span class="ts">06:00</span>所以这道题</p><p><span class="ts">06:01</span>其实应该用线性规划来讲</p><p><span class="ts">06:03</span>为什么</p><p><span class="ts">06:04</span>我认为这个都是单变量</p><p><span class="ts">06:06</span>不能用</p><p><span class="ts">06:07</span>这个</p><p><span class="ts">06:09</span>关联变量</p><p><span class="ts">06:09</span>就是SY相互关联的</p><p><span class="ts">06:12</span>这是因为在以前的教材上</p><p><span class="ts">06:13</span>先学了不等式的性质</p><p><span class="ts">06:15</span>它是单读的</p><p><span class="ts">06:16</span>然后又学了一个线性规划</p><p><span class="ts">06:18</span>专门研究关联变量</p><p><span class="ts">06:20</span>所以我个人认为</p><p><span class="ts">06:22</span>关联变量是用</p><p><span class="ts">06:24</span>你用了就有可能错</p><p><span class="ts">06:26</span>你只要说关联变量做能用</p><p><span class="ts">06:27</span>它是有时能用</p><p><span class="ts">06:29</span>有时用不了</p><p><span class="ts">06:29</span>那你这个能用这个用不了</p><p><span class="ts">06:31</span>你那个有时</p><p><span class="ts">06:32</span>你自己得证明了</p><p><span class="ts">06:33</span>所以通过这道题</p><p><span class="ts">06:35</span>我想告诉大家</p><p><span class="ts">06:36</span>你在解决问题的过程中</p><p><span class="ts">06:38</span>一定要去考虑它的范围是什么</p><p><span class="ts">06:41</span>一定要去思考</p><p><span class="ts">06:42</span>不要看答案对</p><p><span class="ts">06:43</span>就让答案的方法去做</p><p><span class="ts">06:44</span>它为什么对</p><p><span class="ts">06:45</span>它用的超根的就是它证明了没有</p><p><span class="ts">06:47</span>这也是很多人学习不求善解的</p><p><span class="ts">06:51</span>最终导致的结果</p><p><span class="ts">06:53</span>所以说数学中思考</p><p><span class="ts">06:55</span>比把问题解决出来更重要</p></div>
+<div class="btns"><button class="btn s" id="sbtn">分享这一条</button><button class="btn s" id="vbtn">观看原视频</button><button class="btn g" id="cbtn">复制原视频链接</button></div>
+<div class="srcline">视频链接：https://www.douyin.com/video/7676651316097448134</div>
+<div class="foot">由抖音收藏自动整理 · 笔记原文保存在本机知识库</div>
+</div></article>
+</div>
+<script>window.__URL__="https://www.douyin.com/video/7676651316097448134";window.__PAGE__="n/7676651316097448134.html";</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('vbtn'), cp = document.getElementById('cbtn');
+  var u = window.__URL__ || '';
+  function toast(m){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=m;t.classList.add('on');clearTimeout(window.__tt);
+    window.__tt=setTimeout(function(){t.classList.remove('on');},1800);
+  }
+  function copy(s, tip){
+    var m = tip || '链接已复制';
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){toast(m);},
+        function(){fb(s, m);});
+    } else { fb(s, m); }
+  }
+  function fb(s, tip){
+    var m = tip || '链接已复制';
+    var ta=document.createElement('textarea');ta.value=s;
+    ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast(m);}catch(e){toast('复制失败，请长按链接复制');}
+    document.body.removeChild(ta);
+  }
+  if(btn) btn.addEventListener('click', function(e){
+    e.preventDefault(); if(!u) return;
+    var w=null; try{ w=window.open(u,'_blank'); }catch(err){ w=null; }
+    if(!w){ try{ location.href=u; }catch(e2){ copy(u, '原视频链接已复制，去抖音打开'); } }
+  });
+  if(cp) cp.addEventListener('click', function(e){ e.preventDefault(); copy(u, '原视频链接已复制，去抖音打开'); });
+  var sb = document.getElementById('sbtn');
+  if(sb) sb.addEventListener('click', function(e){
+    e.preventDefault();
+    copy((location.href||'').split('#')[0], '本条分享链接已复制，可直接发到群里');
+  });
+})();
+</script>
+
+</body></html>
