@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>数一150之冲刺阶段焚决 养成代特殊值意识，至少提5-10分，做题速度大幅提升</title>
+<meta name="description" content="视频分享了在考研数学中运用特殊值技巧来提升做题速度和分数的方法。">
+<meta property="og:title" content="数一150之冲刺阶段焚决 养成代特殊值意识，至少提5-10分，做题速度大幅提升">
+<meta property="og:description" content="视频分享了在考研数学中运用特殊值技巧来提升做题速度和分数的方法。">
+<meta property="og:type" content="article">
+<style>
+:root{
+ --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --sub:#6b7280; --line:#e5e7eb;
+ --accent:#0f766e; --accent-soft:#ecfdf5; --tag:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+header.top{padding:6px 2px 16px}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.4px}
+.meta{color:var(--sub);font-size:14px}
+.stats{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;
+ padding:6px 12px;font-size:13px;cursor:pointer;color:var(--sub);transition:.15s;
+ font-family:inherit;line-height:1.4}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+ display:flex;flex-direction:column;cursor:pointer;transition:.18s;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10);border-color:#d6dde5}
+.thumb{aspect-ratio:16/10;background:#eef1f4 center/cover no-repeat;position:relative}
+.thumb .cat{position:absolute;left:10px;top:10px;background:rgba(15,118,110,.94);color:#fff;
+ font-size:12px;padding:3px 9px;border-radius:6px;letter-spacing:.3px}
+.thumb .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;
+ font-size:12px;padding:2px 7px;border-radius:5px}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card h3{margin:0;font-size:15.5px;line-height:1.45;font-weight:600;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.autor{font-size:12.5px;color:var(--sub)}
+.one{font-size:13.5px;color:#374151;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:4px;font-size:12.5px;color:var(--accent);font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;
+ color:var(--accent);cursor:pointer;background:none;border:0;padding:6px 0;font-weight:600;font-family:inherit}
+.back:hover{opacity:.75}
+.pos{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero{position:relative;height:380px;background:#101418;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:-30px;background:center/cover no-repeat;
+ filter:blur(26px) saturate(1.1);opacity:.5;transform:scale(1.12)}
+.hero-fg{position:absolute;inset:0;background:center/contain no-repeat;z-index:1}
+.dbody{padding:20px 22px 24px}
+.dbody h2{margin:0 0 10px;font-size:20px;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tags span{background:var(--tag);color:#475569;font-size:12.5px;padding:4px 10px;border-radius:7px}
+.sec-t{font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;
+ letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.sec-t::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px}
+.sec-t .cnt{font-weight:500;color:var(--sub);font-size:12px;letter-spacing:0}
+.lead{font-size:15px;color:#242a31;margin:0}
+ul.pts{margin:0;padding-left:0;list-style:none}
+ul.pts li{position:relative;padding-left:20px;margin:8px 0;color:#242a31;font-size:15px}
+ul.pts li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+ border-radius:50%;background:var(--accent);opacity:.55}
+.kv{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;
+ padding:11px 14px;font-size:14px;color:#155e56}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;
+ font-family:inherit;line-height:1.4}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn.g{background:#f3f4f6;color:#374151;border-color:var(--line)}
+.transcript{margin-top:4px;max-height:62vh;overflow:auto;border:1px solid var(--line);
+ border-radius:10px;padding:14px 16px;background:#fbfcfd}
+.transcript p{margin:2px 0;font-size:14.5px;color:#242a31;line-height:1.7}
+.transcript p .ts{color:#9aa3ad;font-size:12.5px;margin-right:8px;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--sub);padding:60px 0}
+.srcline{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+ font-size:12.5px;color:var(--sub);word-break:break-all;line-height:1.6}
+.srcline span{color:#0f766e;user-select:all;-webkit-user-select:all}
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,16px);
+ background:rgba(22,28,32,.94);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:9px;
+ opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{margin-top:36px;text-align:center;color:#9aa3ad;font-size:12.5px;line-height:1.9}
+@media (max-width:600px){
+ .wrap{padding:14px 12px 48px} h1{font-size:20px}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .hero{height:260px}
+ .dbody{padding:16px 15px 20px} .dbody h2{font-size:17.5px}
+ ul.pts li,.lead{font-size:14.5px}
+ .transcript{max-height:none}
+}
+
+.wrap{max-width:820px}
+.share-bar{display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.share-bar a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.share-bar a:hover{text-decoration:underline}
+.note-meta{color:var(--sub);font-size:13.5px;margin:6px 0 18px}
+.transcript p{display:flex;gap:12px;margin:0 0 6px;font-size:14.5px;line-height:1.65}
+.transcript .ts{flex:0 0 44px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.srcline{font-size:12.5px;color:var(--sub);word-break:break-all;margin-top:8px}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<div class="share-bar"><a href="../index.html">← 全部收藏总目录</a></div>
+<div class="hero"><div class="hero-bg" style="background-image:url('../covers/7696546611081579816_460.jpg')"></div><div class="hero-fg" style="background-image:url('../covers/7696546611081579816_460.jpg')"></div></div>
+<article class="panel"><div class="dbody">
+<h2>数一150之冲刺阶段焚决 养成代特殊值意识，至少提5-10分，做题速度大幅提升</h2>
+<div class="tags"><span>分类 考研</span><span>我尊重你的感</span><span>时长 9:27</span><span>2026-11-22</span></div>
+<div class="sec-t">一句话总结</div><p class="lead">视频分享了在考研数学中运用特殊值技巧来提升做题速度和分数的方法。</p>
+<div class="sec-t">核心要点</div><ul class="pts"><li>建议在做完每道题后，首先尝试用特殊值的方法解决，以快速得出答案或排除选项。</li><li>特殊值技巧适用于多种题型，如函数、矩阵等，能够有效提高解题效率。</li><li>通过实际案例演示了如何运用特殊值技巧解决考研数学真题中的问题。</li><li>强调了特殊值意识的重要性，尤其是在考试冲刺阶段，可以帮助考生至少提高5-10分。</li><li>建议考生在模拟卷或真题练习中适当练习特殊值技巧，以形成解题习惯。</li></ul>
+<div class="sec-t">关键信息</div><div class="kv">视频中提到的数据：通过10道考研数学一的真题实例，展示了特殊值技巧的应用。；视频中提到的技巧：特殊值、特殊函数、特殊矩阵。；视频中提到的案例：第二题、第五题、第六题、第十题等。</div>
+<div class="sec-t">完整文字稿 <span class="cnt">226 段</span></div><div class="transcript"><p><span class="ts">00:00</span>大家好,今天给大家分享一个在考研冲击阵非常有用的考研数学技巧</p><p><span class="ts">00:07</span>我认为可能比学会任何一个支点都重要</p><p><span class="ts">00:11</span>如果你能数,如果能数炼运的话,然后做地速度也会大幅上升</p><p><span class="ts">00:16</span>这个技巧就是带特殊值,然后大家可能觉得这个不算什么技巧</p><p><span class="ts">00:22</span>因为平常也会用,但是我的理论是在每做完一道全程地之后</p><p><span class="ts">00:28</span>看完题目之后的第一件事不是分析题目</p><p><span class="ts">00:31</span>而是看能不能通过特殊值的方法解决这个问题</p><p><span class="ts">00:37</span>我会用二六考研数学一的真题就是十道学的题</p><p><span class="ts">00:42</span>里面的几道来实践这种方法</p><p><span class="ts">00:50</span>我把这个带特殊值分为三类</p><p><span class="ts">00:54</span>分别是特殊函数,特殊矩正,特殊值</p><p><span class="ts">00:58</span>然后下面是二六考研数学一的十道选的题</p><p><span class="ts">01:03</span>我把能够用带特殊值能做的题标注起来了</p><p><span class="ts">01:08</span>形容看,先看第二题</p><p><span class="ts">01:10</span>把n为基或者n为有分别带入前面这个三加负一的n此方</p><p><span class="ts">01:16</span>它就是1或者在n为偶的时候1,然后在n为基的时候是1.2</p><p><span class="ts">01:23</span>然后我们发现如果是1的话</p><p><span class="ts">01:25</span>它后面这个sn,s2n此方它肯定不能超过1</p><p><span class="ts">01:29</span>所以肯定直接把s排除掉</p><p><span class="ts">01:33</span>然后对于bd我们直接带这个边界值</p><p><span class="ts">01:37</span>就是带s等1的时候</p><p><span class="ts">01:40</span>我们把s等1带进去发现</p><p><span class="ts">01:42</span>如果n为偶的话,它前面就是1</p><p><span class="ts">01:45</span>在n去向物穷的时候它的极限并不是0</p><p><span class="ts">01:48</span>所以这个极数求额也肯定不收敛</p><p><span class="ts">01:51</span>所以直接选题</p><p><span class="ts">01:54</span>这一道题也可以用带特殊函数的方法来解决</p><p><span class="ts">01:59</span>我们看题目,设函数fx在区间负一到一有定义</p><p><span class="ts">02:04</span>我们会考虑能不能设置一些有定义</p><p><span class="ts">02:07</span>但是不连续的函数做这个反例</p><p><span class="ts">02:12</span>我们先来看a</p><p><span class="ts">02:14</span>fx在负一到0单调地点</p><p><span class="ts">02:16</span>在0到1单调地增时f0一定是基角值</p><p><span class="ts">02:20</span>然后我们很容易就可以想到有这</p><p><span class="ts">02:22</span>可以构造一个这样</p><p><span class="ts">02:23</span>然后在s0的时候</p><p><span class="ts">02:25</span>s等于0的时候它不是不等于0</p><p><span class="ts">02:27</span>所以可以把a显示排除掉</p><p><span class="ts">02:30</span>b显示是一样的</p><p><span class="ts">02:32</span>f0是是不是基角值</p><p><span class="ts">02:35</span>它并不影响fx在负一到0和0到1的单调性</p><p><span class="ts">02:42</span>我先可以这样</p><p><span class="ts">02:45</span>在负一到1的时候</p><p><span class="ts">02:47</span>随便是什么函数</p><p><span class="ts">02:49</span>然后在s0的时候</p><p><span class="ts">02:50</span>只要比左右两端的小就可以</p><p><span class="ts">02:52</span>所以b也排除掉</p><p><span class="ts">02:55</span>这个c因为它说</p><p><span class="ts">02:57</span>它给了a显示的条件</p><p><span class="ts">02:58</span>所以我们不能再用这种</p><p><span class="ts">03:00</span>不连续的函数</p><p><span class="ts">03:02</span>因为它已经给了</p><p><span class="ts">03:03</span>是函数了</p><p><span class="ts">03:04</span>所以我们发现</p><p><span class="ts">03:06</span>发现这个是</p><p><span class="ts">03:07</span>看一遍发现没有什么思路</p><p><span class="ts">03:13</span>我们再看这个地选项</p><p><span class="ts">03:17</span>这个函数在负一到一地增的时候</p><p><span class="ts">03:20</span>它说这个fx是函的</p><p><span class="ts">03:23</span>因为我们可以看到</p><p><span class="ts">03:26</span>这个底下有s-1分之一</p><p><span class="ts">03:27</span>我们想着能不能把这个分子</p><p><span class="ts">03:29</span>变成一个常数</p><p><span class="ts">03:30</span>变成一个负的常数</p><p><span class="ts">03:32</span>它就能在负一到一单调</p><p><span class="ts">03:34</span>然后满足这个条件</p><p><span class="ts">03:36</span>我们可以考虑这个函数</p><p><span class="ts">03:39</span>在负一到1的时候</p><p><span class="ts">03:43</span>等于0</p><p><span class="ts">03:45</span>然后只在s等于1的时候是1</p><p><span class="ts">03:48</span>然后我们发现</p><p><span class="ts">03:50</span>把这个fx带到这里</p><p><span class="ts">03:52</span>带到函数里面</p><p><span class="ts">03:56</span>它就是负 s-1分之1</p><p><span class="ts">03:58</span>这个是在负一到一</p><p><span class="ts">04:00</span>左臂又开始地增的</p><p><span class="ts">04:02</span>但是它的函数明显不着</p><p><span class="ts">04:05</span>所以这个地选项也排除</p><p><span class="ts">04:07</span>我们可以选</p><p><span class="ts">04:08</span>就发现可以选c</p><p><span class="ts">04:11</span>然后我们看这两道</p><p><span class="ts">04:13</span>现代题</p><p><span class="ts">04:16</span>其实现代这两道选题</p><p><span class="ts">04:18</span>是经常能够用带车入来解决的</p><p><span class="ts">04:21</span>我们看第五题</p><p><span class="ts">04:23</span>它题目给了置换矩阵的含义</p><p><span class="ts">04:26</span>我们就直接考虑最简单的</p><p><span class="ts">04:29</span>一个特殊函数</p><p><span class="ts">04:30</span>特殊矩阵</p><p><span class="ts">04:32</span>令a等于这个</p><p><span class="ts">04:34</span>然后我们可以发现</p><p><span class="ts">04:35</span>a星又等于0负一</p><p><span class="ts">04:39</span>负一0</p><p><span class="ts">04:40</span>a的逆就等于01</p><p><span class="ts">04:44</span>这样我们可以直接发现</p><p><span class="ts">04:46</span>它这个转制几阵置换矩阵</p><p><span class="ts">04:48</span>明显就不是</p><p><span class="ts">04:50</span>这个转制</p><p><span class="ts">04:51</span>我们就发现这个转制几阵</p><p><span class="ts">04:53</span>明显就不是直换矩阵</p><p><span class="ts">04:54</span>因为它不可能由</p><p><span class="ts">04:56</span>单与矩阵交换顺序来得到</p><p><span class="ts">04:59</span>然后我们也可以同时排除掉</p><p><span class="ts">05:02</span>这个</p><p><span class="ts">05:03</span>但是我们发现</p><p><span class="ts">05:04</span>它这个a的转制和a的逆</p><p><span class="ts">05:09</span>它其实是可能是</p><p><span class="ts">05:12</span>互相摆除</p><p><span class="ts">05:13</span>也可能是相等的</p><p><span class="ts">05:14</span>因为它这个是其实是跟</p><p><span class="ts">05:15</span>a的绝对这个关系</p><p><span class="ts">05:17</span>我们令a等于</p><p><span class="ts">05:20</span>这个那就是</p><p><span class="ts">05:21</span>那这个d就是错的</p><p><span class="ts">05:23</span>所以我们可以直接把b选出来</p><p><span class="ts">05:26</span>然后我们来看第六题</p><p><span class="ts">05:28</span>b</p><p><span class="ts">05:29</span>然后它说</p><p><span class="ts">05:30</span>a的列向量组可以由b的列向量组表示</p><p><span class="ts">05:33</span>我们还是考虑最简单的形式</p><p><span class="ts">05:36</span>让b</p><p><span class="ts">05:38</span>b等于一个单位移正</p><p><span class="ts">05:41</span>a等于</p><p><span class="ts">05:45</span>这个</p><p><span class="ts">05:46</span>然后让b等于</p><p><span class="ts">05:49</span>也是最简单的</p><p><span class="ts">05:51</span>我们发现</p><p><span class="ts">05:53</span>这个在bs等于b</p><p><span class="ts">05:57</span>有解的时候</p><p><span class="ts">05:58</span>as等于b没有解</p><p><span class="ts">06:00</span>所以我们可以直接排除掉c</p><p><span class="ts">06:02</span>然后我们取得这两个特殊矩阵</p><p><span class="ts">06:04</span>也是</p><p><span class="ts">06:05</span>对阵矩阵</p><p><span class="ts">06:07</span>这个d也直接排除掉</p><p><span class="ts">06:11</span>然后我们再来看ab选项</p><p><span class="ts">06:13</span>然后因为ab选项</p><p><span class="ts">06:14</span>它只有这个a和a的转质</p><p><span class="ts">06:16</span>b和b的转质的区别</p><p><span class="ts">06:18</span>我们不能再用这种ab</p><p><span class="ts">06:20</span>都是对阵矩阵的形式了</p><p><span class="ts">06:22</span>因为这样</p><p><span class="ts">06:23</span>选不出来一个正确选项</p><p><span class="ts">06:25</span>我们这里我们把这个b几个人改成这样</p><p><span class="ts">06:31</span>然后我们发现</p><p><span class="ts">06:33</span>然后让b等于这个</p><p><span class="ts">06:35</span>我们会发现</p><p><span class="ts">06:37</span>a的转质</p><p><span class="ts">06:39</span>sβ是有解的</p><p><span class="ts">06:41</span>但是</p><p><span class="ts">06:42</span>b的转质</p><p><span class="ts">06:44</span>b的转质是这个</p><p><span class="ts">06:48</span>它</p><p><span class="ts">06:49</span>它是无解的</p><p><span class="ts">06:50</span>所以就可以把b选项排除</p><p><span class="ts">06:52</span>把a</p><p><span class="ts">06:53</span>连样解出来</p><p><span class="ts">06:55</span>我们看这个第十题</p><p><span class="ts">06:57</span>其实我自己在去年在考人上</p><p><span class="ts">06:59</span>也是没有想出来这个题的</p><p><span class="ts">07:01</span>政治解法</p><p><span class="ts">07:02</span>但是我是通过</p><p><span class="ts">07:04</span>让m为特殊值来写来这条题的</p><p><span class="ts">07:10</span>我们先看一遍这个选项</p><p><span class="ts">07:12</span>它其实就是比较</p><p><span class="ts">07:22</span>这三者的大关系</p><p><span class="ts">07:27</span>这样的话</p><p><span class="ts">07:28</span>我们肯定不能让m和d都等于</p><p><span class="ts">07:30</span>这样它其实</p><p><span class="ts">07:32</span>辨别不出来</p><p><span class="ts">07:33</span>谁对谁错</p><p><span class="ts">07:34</span>我们至少要再多一想</p><p><span class="ts">07:36</span>就是</p><p><span class="ts">07:37</span>m</p><p><span class="ts">07:38</span>再写出来m等于2</p><p><span class="ts">07:40</span>n等于2的时候</p><p><span class="ts">07:43</span>所以我们先</p><p><span class="ts">07:45</span>可以把这个</p><p><span class="ts">07:48</span>这三个算出来</p><p><span class="ts">07:56</span>这样的话</p><p><span class="ts">07:57</span>我们其实就可以列出来两种情况了</p><p><span class="ts">07:59</span>当m等于1的时候</p><p><span class="ts">08:01</span>n等于2的时候</p><p><span class="ts">08:02</span>然后m等于2的时候</p><p><span class="ts">08:04</span>n等于1的时候</p><p><span class="ts">08:05</span>我们去看一下这个this</p><p><span class="ts">08:08</span>这三个分别等于2</p><p><span class="ts">08:11</span>这样我们直接就能得到</p><p><span class="ts">08:14</span>直接就能把这个选项选出来</p><p><span class="ts">08:18</span>就是</p><p><span class="ts">08:19</span>d选项</p><p><span class="ts">08:24</span>现在来总结一下</p><p><span class="ts">08:25</span>大家可以发现其实</p><p><span class="ts">08:27</span>十道题里边有一半都可以用那种</p><p><span class="ts">08:29</span>带特殊值的方法解决</p><p><span class="ts">08:31</span>可能前面有几道题</p><p><span class="ts">08:33</span>特殊值没有那么好想</p><p><span class="ts">08:35</span>但是我只是想通过这种方式</p><p><span class="ts">08:37</span>给大家</p><p><span class="ts">08:38</span>传达一个思想就是</p><p><span class="ts">08:40</span>以后做的一定要有这种</p><p><span class="ts">08:42</span>带特殊值的意识</p><p><span class="ts">08:44</span>就是每做完一道题</p><p><span class="ts">08:46</span>看完一道题干先</p><p><span class="ts">08:47</span>不要着急分析</p><p><span class="ts">08:49</span>看一下能不能</p><p><span class="ts">08:50</span>用这种带特殊值的方法快做出来</p><p><span class="ts">08:53</span>如果你之前</p><p><span class="ts">08:54</span>面对一道难题的想法</p><p><span class="ts">08:56</span>就是分析下发现不会做</p><p><span class="ts">08:58</span>就直接跳过了</p><p><span class="ts">08:59</span>现在也可以用这种方法</p><p><span class="ts">09:00</span>试一下能不能</p><p><span class="ts">09:02</span>尝尝排出几道选项</p><p><span class="ts">09:04</span>甚至把它做出来</p><p><span class="ts">09:08</span>因为考研实际上还是</p><p><span class="ts">09:10</span>我们最后还是为了那个分数</p><p><span class="ts">09:12</span>其实一道题</p><p><span class="ts">09:14</span>到底会不会它的真正解法</p><p><span class="ts">09:16</span>其实也没那么重要</p><p><span class="ts">09:17</span>并且现在已经是充自结盪了</p><p><span class="ts">09:19</span>大家的基础知识</p><p><span class="ts">09:21</span>也都学的差不多了</p><p><span class="ts">09:22</span>其实在做模拟卷的时候</p><p><span class="ts">09:24</span>或者真题的时候</p><p><span class="ts">09:25</span>可以适当的练习一下这种想法</p></div>
+<div class="btns"><button class="btn s" id="sbtn">分享这一条</button><button class="btn s" id="vbtn">观看原视频</button><button class="btn g" id="cbtn">复制原视频链接</button></div>
+<div class="srcline">视频链接：https://www.douyin.com/video/7696546611081579816</div>
+<div class="foot">由抖音收藏自动整理 · 笔记原文保存在本机知识库</div>
+</div></article>
+</div>
+<script>window.__URL__="https://www.douyin.com/video/7696546611081579816";window.__PAGE__="n/7696546611081579816.html";</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('vbtn'), cp = document.getElementById('cbtn');
+  var u = window.__URL__ || '';
+  function toast(m){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=m;t.classList.add('on');clearTimeout(window.__tt);
+    window.__tt=setTimeout(function(){t.classList.remove('on');},1800);
+  }
+  function copy(s, tip){
+    var m = tip || '链接已复制';
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){toast(m);},
+        function(){fb(s, m);});
+    } else { fb(s, m); }
+  }
+  function fb(s, tip){
+    var m = tip || '链接已复制';
+    var ta=document.createElement('textarea');ta.value=s;
+    ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast(m);}catch(e){toast('复制失败，请长按链接复制');}
+    document.body.removeChild(ta);
+  }
+  if(btn) btn.addEventListener('click', function(e){
+    e.preventDefault(); if(!u) return;
+    var w=null; try{ w=window.open(u,'_blank'); }catch(err){ w=null; }
+    if(!w){ try{ location.href=u; }catch(e2){ copy(u, '原视频链接已复制，去抖音打开'); } }
+  });
+  if(cp) cp.addEventListener('click', function(e){ e.preventDefault(); copy(u, '原视频链接已复制，去抖音打开'); });
+  var sb = document.getElementById('sbtn');
+  if(sb) sb.addEventListener('click', function(e){
+    e.preventDefault();
+    copy((location.href||'').split('#')[0], '本条分享链接已复制，可直接发到群里');
+  });
+})();
+</script>
+
+</body></html>

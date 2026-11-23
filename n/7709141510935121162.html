@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一个在职两年的软件工程师告诉你，真实工作中开发岗到底需要那些条件和技术！</title>
+<meta name="description" content="一位在职两年的软件工程师分享了真实工作中开发岗位所需的学历、技术条件及必备技能。">
+<meta property="og:title" content="一个在职两年的软件工程师告诉你，真实工作中开发岗到底需要那些条件和技术！">
+<meta property="og:description" content="一位在职两年的软件工程师分享了真实工作中开发岗位所需的学历、技术条件及必备技能。">
+<meta property="og:type" content="article">
+<style>
+:root{
+ --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --sub:#6b7280; --line:#e5e7eb;
+ --accent:#0f766e; --accent-soft:#ecfdf5; --tag:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+header.top{padding:6px 2px 16px}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.4px}
+.meta{color:var(--sub);font-size:14px}
+.stats{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;
+ padding:6px 12px;font-size:13px;cursor:pointer;color:var(--sub);transition:.15s;
+ font-family:inherit;line-height:1.4}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+ display:flex;flex-direction:column;cursor:pointer;transition:.18s;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10);border-color:#d6dde5}
+.thumb{aspect-ratio:16/10;background:#eef1f4 center/cover no-repeat;position:relative}
+.thumb .cat{position:absolute;left:10px;top:10px;background:rgba(15,118,110,.94);color:#fff;
+ font-size:12px;padding:3px 9px;border-radius:6px;letter-spacing:.3px}
+.thumb .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;
+ font-size:12px;padding:2px 7px;border-radius:5px}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card h3{margin:0;font-size:15.5px;line-height:1.45;font-weight:600;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.autor{font-size:12.5px;color:var(--sub)}
+.one{font-size:13.5px;color:#374151;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:4px;font-size:12.5px;color:var(--accent);font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;
+ color:var(--accent);cursor:pointer;background:none;border:0;padding:6px 0;font-weight:600;font-family:inherit}
+.back:hover{opacity:.75}
+.pos{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero{position:relative;height:380px;background:#101418;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:-30px;background:center/cover no-repeat;
+ filter:blur(26px) saturate(1.1);opacity:.5;transform:scale(1.12)}
+.hero-fg{position:absolute;inset:0;background:center/contain no-repeat;z-index:1}
+.dbody{padding:20px 22px 24px}
+.dbody h2{margin:0 0 10px;font-size:20px;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tags span{background:var(--tag);color:#475569;font-size:12.5px;padding:4px 10px;border-radius:7px}
+.sec-t{font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;
+ letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.sec-t::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px}
+.sec-t .cnt{font-weight:500;color:var(--sub);font-size:12px;letter-spacing:0}
+.lead{font-size:15px;color:#242a31;margin:0}
+ul.pts{margin:0;padding-left:0;list-style:none}
+ul.pts li{position:relative;padding-left:20px;margin:8px 0;color:#242a31;font-size:15px}
+ul.pts li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+ border-radius:50%;background:var(--accent);opacity:.55}
+.kv{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;
+ padding:11px 14px;font-size:14px;color:#155e56}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;
+ font-family:inherit;line-height:1.4}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn.g{background:#f3f4f6;color:#374151;border-color:var(--line)}
+.transcript{margin-top:4px;max-height:62vh;overflow:auto;border:1px solid var(--line);
+ border-radius:10px;padding:14px 16px;background:#fbfcfd}
+.transcript p{margin:2px 0;font-size:14.5px;color:#242a31;line-height:1.7}
+.transcript p .ts{color:#9aa3ad;font-size:12.5px;margin-right:8px;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--sub);padding:60px 0}
+.srcline{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+ font-size:12.5px;color:var(--sub);word-break:break-all;line-height:1.6}
+.srcline span{color:#0f766e;user-select:all;-webkit-user-select:all}
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,16px);
+ background:rgba(22,28,32,.94);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:9px;
+ opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{margin-top:36px;text-align:center;color:#9aa3ad;font-size:12.5px;line-height:1.9}
+@media (max-width:600px){
+ .wrap{padding:14px 12px 48px} h1{font-size:20px}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .hero{height:260px}
+ .dbody{padding:16px 15px 20px} .dbody h2{font-size:17.5px}
+ ul.pts li,.lead{font-size:14.5px}
+ .transcript{max-height:none}
+}
+
+.wrap{max-width:820px}
+.share-bar{display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.share-bar a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.share-bar a:hover{text-decoration:underline}
+.note-meta{color:var(--sub);font-size:13.5px;margin:6px 0 18px}
+.transcript p{display:flex;gap:12px;margin:0 0 6px;font-size:14.5px;line-height:1.65}
+.transcript .ts{flex:0 0 44px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.srcline{font-size:12.5px;color:var(--sub);word-break:break-all;margin-top:8px}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<div class="share-bar"><a href="../index.html">← 全部收藏总目录</a></div>
+<div class="hero"><div class="hero-bg" style="background-image:url('../covers/7709141510935121162_460.jpg')"></div><div class="hero-fg" style="background-image:url('../covers/7709141510935121162_460.jpg')"></div></div>
+<article class="panel"><div class="dbody">
+<h2>一个在职两年的软件工程师告诉你，真实工作中开发岗到底需要那些条件和技术！</h2>
+<div class="tags"><span>分类 技能</span><span>小丑退出舞台</span><span>时长 6:29</span><span>2026-11-22</span></div>
+<div class="sec-t">一句话总结</div><p class="lead">一位在职两年的软件工程师分享了真实工作中开发岗位所需的学历、技术条件及必备技能。</p>
+<div class="sec-t">核心要点</div><ul class="pts"><li>学历要求：公司招聘最低要求全日制本科及以上，专科生需至少三年经验才有资格。</li><li>技术技能：需熟练使用Git进行版本控制，掌握常用编程语言（如Python），精通Debug技能，熟练编写SQL语句，以及使用插件或工具提升效率。</li><li>AI辅助：AI不能完全替代开发者，需在掌握基础技能后才能有效利用AI进行开发。</li><li>前端和运维基础：了解前端技术（如React、Vue）和基本运维命令（如Docker、K8S）有助于全站开发。</li></ul>
+<div class="sec-t">关键信息</div><div class="kv">- 公司招聘学历最低要求全日制本科及以上，专科生需至少三年经验才有资格。；- 真实项目中常用Git进行版本控制，且通常使用私有化的GitLab作为仓库托管平台。；- Debug技能是排查错误或bug的关键，不可或缺。；- 编写SQL语句需熟练掌握CTE、自查询、Exists判断等高级功能，报表和看板的SQL语句可能涉及多表关联和复杂逻辑。；- AI不能完全替代开发者，需在掌握基础技能后才能有效利用AI进行开发。</div>
+<div class="sec-t">完整文字稿 <span class="cnt">157 段</span></div><div class="transcript"><p><span class="ts">00:00</span>很多兄弟是不是很好奇进入软件开发港</p><p><span class="ts">00:03</span>到底需要什么条件和技术呢</p><p><span class="ts">00:06</span>现在就以我所在公司真实的招聘条件</p><p><span class="ts">00:10</span>和项目中用到的技术为例分享给大家</p><p><span class="ts">00:13</span>第一个条件就是学历</p><p><span class="ts">00:15</span>目前我们公司招聘学历最低都得全日至本科及以上</p><p><span class="ts">00:20</span>专科最低经验要三年及以上才有进场的资格</p><p><span class="ts">00:24</span>专科刚毕业的话可以说没有进场的资格了</p><p><span class="ts">00:28</span>如果是本科的兄弟那么就好好学技术</p><p><span class="ts">00:31</span>如果是专科的兄弟那就得先专生本颅</p><p><span class="ts">00:35</span>第二个技术</p><p><span class="ts">00:36</span>因为每个公司的岗位业务都不太一样</p><p><span class="ts">00:39</span>所用的技术也不太一样</p><p><span class="ts">00:41</span>所以这里只以我目前用到的一些通用技术展开给大家讲讲</p><p><span class="ts">00:46</span>首先就是版本控制Git</p><p><span class="ts">00:48</span>一定要理解和熟练使用Git的拉曲更新</p><p><span class="ts">00:52</span>提交 推送 合并 提取 删除提交</p><p><span class="ts">00:57</span>将当前分支重置到此处</p><p><span class="ts">00:59</span>撤销提交 还原提交</p><p><span class="ts">01:02</span>查看分支提交历史</p><p><span class="ts">01:04</span>修改提交者名称等操作</p><p><span class="ts">01:06</span>因为你进项目的第一件事</p><p><span class="ts">01:08</span>就是拉取公司的项目代码到本地</p><p><span class="ts">01:11</span>我没有说给平台账号注册之类的</p><p><span class="ts">01:14</span>是因为在真实项目中</p><p><span class="ts">01:17</span>比仓库托管平台都是那往私有化不属的</p><p><span class="ts">01:20</span>你不在这个局域网内你根本就访问不了</p><p><span class="ts">01:24</span>即使你在这个局域网内不知道地址</p><p><span class="ts">01:27</span>没有权限 依样注册不了账号</p><p><span class="ts">01:30</span>通常这个账号注册权限只有开发族长有</p><p><span class="ts">01:33</span>要么是他帮你注册</p><p><span class="ts">01:35</span>要么他会直接给一个你</p><p><span class="ts">01:37</span>所以账号注册这个你不用操心</p><p><span class="ts">01:40</span>只需要记住他给你的账号密码即可</p><p><span class="ts">01:43</span>这些账号公司也都是有权限查看和监控的</p><p><span class="ts">01:47</span>不是你的私人账号</p><p><span class="ts">01:49</span>这里多说一嘴</p><p><span class="ts">01:50</span>大家要区分Git和Git仓库托管平台区别</p><p><span class="ts">01:54</span>像GitLab</p><p><span class="ts">01:56</span>GitHub</p><p><span class="ts">01:56</span>Git</p><p><span class="ts">01:58</span>Coding这些是Git仓库托管平台</p><p><span class="ts">02:01</span>作用就是存放远程仓库和做协作功能</p><p><span class="ts">02:05</span>这些平台底层都是依赖于Git</p><p><span class="ts">02:07</span>不管用的是什么平台</p><p><span class="ts">02:09</span>用的命令都一样</p><p><span class="ts">02:11</span>都是标准的Git命令</p><p><span class="ts">02:13</span>通常私有化不属用的托管平台都是GitLab</p><p><span class="ts">02:17</span>如果你问我是如何知道的</p><p><span class="ts">02:19</span>因为我在几家公司待过</p><p><span class="ts">02:21</span>得出来的结果</p><p><span class="ts">02:23</span>其次就是用的边城语</p><p><span class="ts">02:25</span>就以我用的拍赃奈利字</p><p><span class="ts">02:28</span>最基础的语法和普通业务代码逻辑</p><p><span class="ts">02:31</span>你要看得懂</p><p><span class="ts">02:32</span>第三就是熟练使用开发工具</p><p><span class="ts">02:34</span>最重要的技能就是Debug</p><p><span class="ts">02:36</span>也就是打断点</p><p><span class="ts">02:38</span>这是重中之重</p><p><span class="ts">02:39</span>也是把排查的必备技能</p><p><span class="ts">02:42</span>在项目中稍微隐晦一点的错误或者漏洞</p><p><span class="ts">02:45</span>只能通过Debug的方式才能排查出来</p><p><span class="ts">02:48</span>只要你会Debug不管遇到什么样的爆错或bug</p><p><span class="ts">02:52</span>都能轻松通过Debug一步步</p><p><span class="ts">02:54</span>找到原因并化解</p><p><span class="ts">02:56</span>如果你连Debug都不会的话</p><p><span class="ts">02:58</span>你也就没有Bug排查能力</p><p><span class="ts">03:01</span>连这个能力都没有的话</p><p><span class="ts">03:03</span>你也很难成为一名合格的程序人</p><p><span class="ts">03:05</span>第四就是要熟练使用SQL语句</p><p><span class="ts">03:09</span>SQL语句的内练阶</p><p><span class="ts">03:11</span>左练阶</p><p><span class="ts">03:12</span>自查询</p><p><span class="ts">03:13</span>CT字句</p><p><span class="ts">03:15</span>K组1分支</p><p><span class="ts">03:16</span>分组</p><p><span class="ts">03:17</span>排序</p><p><span class="ts">03:18</span>分析</p><p><span class="ts">03:19</span>Exists 判读存在</p><p><span class="ts">03:21</span>还有一些通过的</p><p><span class="ts">03:22</span>取最大值最小值的函数等</p><p><span class="ts">03:24</span>大家不要以为这些SQL语句</p><p><span class="ts">03:27</span>就是几个简单的表</p><p><span class="ts">03:29</span>增山改查而已</p><p><span class="ts">03:30</span>只要涉及到数据展示和查询的</p><p><span class="ts">03:33</span>就会用到报表和看板</p><p><span class="ts">03:35</span>这两个东西可不是简单的几行</p><p><span class="ts">03:38</span>SQL语句就能实现</p><p><span class="ts">03:40</span>通常一张报表或看板的SQL语句</p><p><span class="ts">03:44</span>能显满几页A4纸</p><p><span class="ts">03:46</span>都是关联七八章表以上</p><p><span class="ts">03:48</span>每张表的字段平均在三四十个字段以上</p><p><span class="ts">03:52</span>通过各种CT字句</p><p><span class="ts">03:54</span>链接</p><p><span class="ts">03:55</span>分组</p><p><span class="ts">03:56</span>排序</p><p><span class="ts">03:56</span>聚合来实现这个</p><p><span class="ts">03:58</span>SQL</p><p><span class="ts">03:59</span>有时候</p><p><span class="ts">04:00</span>单单用SQL语句实现不了</p><p><span class="ts">04:03</span>还要欠着OM的代码方法来实现</p><p><span class="ts">04:05</span>所以对于</p><p><span class="ts">04:07</span>SQL语句一定要熟练</p><p><span class="ts">04:09</span>要不然工作中遇到</p><p><span class="ts">04:10</span>报表和看板的SQL语句你就猛了</p><p><span class="ts">04:14</span>第五就是熟练使用拆插件或者工具</p><p><span class="ts">04:17</span>大家也不要以为</p><p><span class="ts">04:19</span>现在有了AI上面那些都可以不学了</p><p><span class="ts">04:22</span>如果有这个想法的兄弟们</p><p><span class="ts">04:24</span>我只能说你们还是太年轻了</p><p><span class="ts">04:27</span>Yagun就没有踏入过软件开发这个行业</p><p><span class="ts">04:30</span>你只有掌握我上面所说的这些技能之后</p><p><span class="ts">04:34</span>你才有能力使用拆开发提升效率</p><p><span class="ts">04:37</span>AI不是说</p><p><span class="ts">04:38</span>你说一句话就能实现你的需求了</p><p><span class="ts">04:41</span>而是你需要知道这个功能实现</p><p><span class="ts">04:43</span>思路的前提下才能正确使用拆开发</p><p><span class="ts">04:46</span>这个时候把整个逻辑说给菜听</p><p><span class="ts">04:50</span>AI才能根据你的要求生成代码</p><p><span class="ts">04:53</span>只要项目稍微复杂一点</p><p><span class="ts">04:55</span>以便生成的代码肯定不能满足要求</p><p><span class="ts">04:58</span>往往需要返回修改</p><p><span class="ts">05:00</span>对于有些盲点</p><p><span class="ts">05:02</span>AI改几遍之后还是无法解决</p><p><span class="ts">05:05</span>此时你不下场看代码</p><p><span class="ts">05:07</span>AI根本无法解决</p><p><span class="ts">05:08</span>只有那种机器简单的项目和逻辑</p><p><span class="ts">05:11</span>才不需要编程基础</p><p><span class="ts">05:13</span>这种顶多算个demo自己玩玩还可以</p><p><span class="ts">05:16</span>想要真实使用还是有点距离的</p><p><span class="ts">05:20</span>你连基础代码都看不懂</p><p><span class="ts">05:22</span>又弹和能用AI 开发呢</p><p><span class="ts">05:24</span>最后就是要熟悉一些前端和运为的技术</p><p><span class="ts">05:28</span>前端最起码会前端三键客和Viu</p><p><span class="ts">05:31</span>运为至少会敲许你机命令</p><p><span class="ts">05:34</span>会点Docker和K8S更好</p><p><span class="ts">05:36</span>不会也没关系</p><p><span class="ts">05:38</span>也不影响开发工作</p><p><span class="ts">05:39</span>现在有AI之后</p><p><span class="ts">05:41</span>基本上大家都是干全站的</p><p><span class="ts">05:44</span>身为后端的兄弟更加是全站牛马</p><p><span class="ts">05:47</span>有时候还要减点运为</p><p><span class="ts">05:49</span>再加上现在经济下行竞争压力大</p><p><span class="ts">05:52</span>很多中小公司的项目都是全站式开发</p><p><span class="ts">05:56</span>没有特别明确的前后端分工</p><p><span class="ts">05:58</span>有了基础之后不会的就用AI补</p><p><span class="ts">06:01</span>这里我只讲的是工作中最实用必备的技能</p><p><span class="ts">06:05</span>没有讲那些简历上</p><p><span class="ts">06:07</span>哪些吹上天高大上的技术战</p><p><span class="ts">06:10</span>现实中几乎没用到过那些技术战</p><p><span class="ts">06:13</span>所以这里就不过多追数这些技术</p><p><span class="ts">06:16</span>有兴趣的可以多钻研</p><p><span class="ts">06:18</span>虽然工作中不一定用到</p><p><span class="ts">06:20</span>但是面试肯定用得到</p><p><span class="ts">06:22</span>本期视频就到这里</p><p><span class="ts">06:24</span>希望这个视频能帮助到你</p><p><span class="ts">06:27</span>我们下个视频再见</p></div>
+<div class="btns"><button class="btn s" id="sbtn">分享这一条</button><button class="btn s" id="vbtn">观看原视频</button><button class="btn g" id="cbtn">复制原视频链接</button></div>
+<div class="srcline">视频链接：https://www.douyin.com/video/7709141510935121162</div>
+<div class="foot">由抖音收藏自动整理 · 笔记原文保存在本机知识库</div>
+</div></article>
+</div>
+<script>window.__URL__="https://www.douyin.com/video/7709141510935121162";window.__PAGE__="n/7709141510935121162.html";</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('vbtn'), cp = document.getElementById('cbtn');
+  var u = window.__URL__ || '';
+  function toast(m){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=m;t.classList.add('on');clearTimeout(window.__tt);
+    window.__tt=setTimeout(function(){t.classList.remove('on');},1800);
+  }
+  function copy(s, tip){
+    var m = tip || '链接已复制';
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){toast(m);},
+        function(){fb(s, m);});
+    } else { fb(s, m); }
+  }
+  function fb(s, tip){
+    var m = tip || '链接已复制';
+    var ta=document.createElement('textarea');ta.value=s;
+    ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast(m);}catch(e){toast('复制失败，请长按链接复制');}
+    document.body.removeChild(ta);
+  }
+  if(btn) btn.addEventListener('click', function(e){
+    e.preventDefault(); if(!u) return;
+    var w=null; try{ w=window.open(u,'_blank'); }catch(err){ w=null; }
+    if(!w){ try{ location.href=u; }catch(e2){ copy(u, '原视频链接已复制，去抖音打开'); } }
+  });
+  if(cp) cp.addEventListener('click', function(e){ e.preventDefault(); copy(u, '原视频链接已复制，去抖音打开'); });
+  var sb = document.getElementById('sbtn');
+  if(sb) sb.addEventListener('click', function(e){
+    e.preventDefault();
+    copy((location.href||'').split('#')[0], '本条分享链接已复制，可直接发到群里');
+  });
+})();
+</script>
+
+</body></html>

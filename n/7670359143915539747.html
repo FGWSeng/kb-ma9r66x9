@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026数模国赛AI新规落地！用AI怎么才不算违规？</title>
+<meta name="description" content="视频讲解了2026数模国赛AI新规的落地，以及如何在比赛中合规使用AI工具。">
+<meta property="og:title" content="2026数模国赛AI新规落地！用AI怎么才不算违规？">
+<meta property="og:description" content="视频讲解了2026数模国赛AI新规的落地，以及如何在比赛中合规使用AI工具。">
+<meta property="og:type" content="article">
+<style>
+:root{
+ --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --sub:#6b7280; --line:#e5e7eb;
+ --accent:#0f766e; --accent-soft:#ecfdf5; --tag:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+header.top{padding:6px 2px 16px}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.4px}
+.meta{color:var(--sub);font-size:14px}
+.stats{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;
+ padding:6px 12px;font-size:13px;cursor:pointer;color:var(--sub);transition:.15s;
+ font-family:inherit;line-height:1.4}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+ display:flex;flex-direction:column;cursor:pointer;transition:.18s;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10);border-color:#d6dde5}
+.thumb{aspect-ratio:16/10;background:#eef1f4 center/cover no-repeat;position:relative}
+.thumb .cat{position:absolute;left:10px;top:10px;background:rgba(15,118,110,.94);color:#fff;
+ font-size:12px;padding:3px 9px;border-radius:6px;letter-spacing:.3px}
+.thumb .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;
+ font-size:12px;padding:2px 7px;border-radius:5px}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card h3{margin:0;font-size:15.5px;line-height:1.45;font-weight:600;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.autor{font-size:12.5px;color:var(--sub)}
+.one{font-size:13.5px;color:#374151;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:4px;font-size:12.5px;color:var(--accent);font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;
+ color:var(--accent);cursor:pointer;background:none;border:0;padding:6px 0;font-weight:600;font-family:inherit}
+.back:hover{opacity:.75}
+.pos{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero{position:relative;height:380px;background:#101418;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:-30px;background:center/cover no-repeat;
+ filter:blur(26px) saturate(1.1);opacity:.5;transform:scale(1.12)}
+.hero-fg{position:absolute;inset:0;background:center/contain no-repeat;z-index:1}
+.dbody{padding:20px 22px 24px}
+.dbody h2{margin:0 0 10px;font-size:20px;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tags span{background:var(--tag);color:#475569;font-size:12.5px;padding:4px 10px;border-radius:7px}
+.sec-t{font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;
+ letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.sec-t::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px}
+.sec-t .cnt{font-weight:500;color:var(--sub);font-size:12px;letter-spacing:0}
+.lead{font-size:15px;color:#242a31;margin:0}
+ul.pts{margin:0;padding-left:0;list-style:none}
+ul.pts li{position:relative;padding-left:20px;margin:8px 0;color:#242a31;font-size:15px}
+ul.pts li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+ border-radius:50%;background:var(--accent);opacity:.55}
+.kv{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;
+ padding:11px 14px;font-size:14px;color:#155e56}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;
+ font-family:inherit;line-height:1.4}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn.g{background:#f3f4f6;color:#374151;border-color:var(--line)}
+.transcript{margin-top:4px;max-height:62vh;overflow:auto;border:1px solid var(--line);
+ border-radius:10px;padding:14px 16px;background:#fbfcfd}
+.transcript p{margin:2px 0;font-size:14.5px;color:#242a31;line-height:1.7}
+.transcript p .ts{color:#9aa3ad;font-size:12.5px;margin-right:8px;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--sub);padding:60px 0}
+.srcline{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+ font-size:12.5px;color:var(--sub);word-break:break-all;line-height:1.6}
+.srcline span{color:#0f766e;user-select:all;-webkit-user-select:all}
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,16px);
+ background:rgba(22,28,32,.94);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:9px;
+ opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{margin-top:36px;text-align:center;color:#9aa3ad;font-size:12.5px;line-height:1.9}
+@media (max-width:600px){
+ .wrap{padding:14px 12px 48px} h1{font-size:20px}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .hero{height:260px}
+ .dbody{padding:16px 15px 20px} .dbody h2{font-size:17.5px}
+ ul.pts li,.lead{font-size:14.5px}
+ .transcript{max-height:none}
+}
+
+.wrap{max-width:820px}
+.share-bar{display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.share-bar a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.share-bar a:hover{text-decoration:underline}
+.note-meta{color:var(--sub);font-size:13.5px;margin:6px 0 18px}
+.transcript p{display:flex;gap:12px;margin:0 0 6px;font-size:14.5px;line-height:1.65}
+.transcript .ts{flex:0 0 44px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.srcline{font-size:12.5px;color:var(--sub);word-break:break-all;margin-top:8px}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<div class="share-bar"><a href="../index.html">← 全部收藏总目录</a></div>
+<div class="hero"><div class="hero-bg" style="background-image:url('../covers/7670359143915539747_460.jpg')"></div><div class="hero-fg" style="background-image:url('../covers/7670359143915539747_460.jpg')"></div></div>
+<article class="panel"><div class="dbody">
+<h2>2026数模国赛AI新规落地！用AI怎么才不算违规？</h2>
+<div class="tags"><span>分类 数学建模</span><span>云顶数模</span><span>时长 8:03</span><span>2026-11-22</span></div>
+<div class="sec-t">一句话总结</div><p class="lead">视频讲解了2026数模国赛AI新规的落地，以及如何在比赛中合规使用AI工具。</p>
+<div class="sec-t">核心要点</div><ul class="pts"><li>AI智能体可以帮助在比赛中完成大部分工作，但需记录输入输出并标明使用痕迹。</li><li>比赛中对AI的使用态度是既不鼓励也不禁止，但最终成绩仍需依靠个人思考和能力。</li><li>使用AI需在参考文献前声明，并附上详细的PDF说明，包括AI工具版本、类型、使用方式等。</li></ul>
+<div class="sec-t">关键信息</div><div class="kv">视频中提到的数据：今年7月份统计的AI使用率为97.8%，其中16.4%的学生表示没有AI不會三塞，37.6%的学生表示无法判断AI數的對錯。</div>
+<div class="sec-t">完整文字稿 <span class="cnt">232 段</span></div><div class="transcript"><p><span class="ts">00:00</span>好,昨天在AS使用新规出現的第一時刻</p><p><span class="ts">00:05</span>我們給大家錄製了相關的文件解讀視頻</p><p><span class="ts">00:08</span>這個視頻我們給大家去講解一下</p><p><span class="ts">00:11</span>針對於這個AS新规</p><p><span class="ts">00:12</span>我們具體應該如何去準備和比賽</p><p><span class="ts">00:15</span>好吧</p><p><span class="ts">00:16</span>通常我們第一步如果大家想獲取到我們這個文件</p><p><span class="ts">00:19</span>的話你需要搜索高教室被學家建立進賽</p><p><span class="ts">00:21</span>然後進入的是edu.cn這個</p><p><span class="ts">00:25</span>因為有很多的網站都是倒板網站</p><p><span class="ts">00:27</span>大家千萬別進錯了</p><p><span class="ts">00:29</span>比如這個</p><p><span class="ts">00:30</span>這個是對的</p><p><span class="ts">00:32</span>如果你搜的話</p><p><span class="ts">00:33</span>我們可能會進入其他的打廣告的網站</p><p><span class="ts">00:36</span>是以這個為edu.cn為這個域名的</p><p><span class="ts">00:42</span>然後通常要點的這個</p><p><span class="ts">00:44</span>就是我們這個叫</p><p><span class="ts">00:45</span>全國大學生數學建模競賽人工智能工具使用規範</p><p><span class="ts">00:49</span>2021年實行</p><p><span class="ts">00:51</span>這個是我們8月3號昨天6點</p><p><span class="ts">00:54</span>剛剛發布的最新的使用規範</p><p><span class="ts">00:57</span>然後我們可以直接去閱讀他的文字版的</p><p><span class="ts">00:59</span>你也可以下載</p><p><span class="ts">01:00</span>去閱讀他的PTS</p><p><span class="ts">01:01</span>這就是我和大家講的</p><p><span class="ts">01:03</span>然後我們先給大家講一下針對這個</p><p><span class="ts">01:04</span>我們應該如何的去備賽</p><p><span class="ts">01:06</span>如何的去準備這個</p><p><span class="ts">01:08</span>首先就是第一</p><p><span class="ts">01:10</span>因為這個AI智能體這個詞</p><p><span class="ts">01:12</span>其實是我們今天剛提出來的</p><p><span class="ts">01:14</span>在去年以及去年之前</p><p><span class="ts">01:15</span>其實我們也有提到這個詞</p><p><span class="ts">01:17</span>去年的文件大家可以看到是</p><p><span class="ts">01:18</span>大語言模型</p><p><span class="ts">01:19</span>甚至是AI論文輔助工具</p><p><span class="ts">01:21</span>代碼輔助工具沒了</p><p><span class="ts">01:23</span>沒有提到AI智能體</p><p><span class="ts">01:24</span>那麼什麼是AI智能體呢</p><p><span class="ts">01:26</span>其實就是我們數目的每一個環節</p><p><span class="ts">01:28</span>它都是固定的流程</p><p><span class="ts">01:29</span>固定的提示詞</p><p><span class="ts">01:30</span>然後很多的作者</p><p><span class="ts">01:31</span>他們把這個固定的流程</p><p><span class="ts">01:33</span>製作了一個完整的工作流的形式</p><p><span class="ts">01:37</span>不同的版塊使用不同的提示詞</p><p><span class="ts">01:39</span>用不同的AI</p><p><span class="ts">01:40</span>就能可以輸出一片完整的論文</p><p><span class="ts">01:42</span>這個甚至於在Gateup上有一個</p><p><span class="ts">01:46</span>固模智能體是2.9P還是3.9K的特廠</p><p><span class="ts">01:51</span>那個星是很高的一個評價</p><p><span class="ts">01:53</span>而且整個市場現在有十幾家數目智能體</p><p><span class="ts">01:57</span>所以這個智能體就是可以幫我們</p><p><span class="ts">01:59</span>在短短一小時完成80%的工作</p><p><span class="ts">02:02</span>剩下的我們70個小時</p><p><span class="ts">02:03</span>完成20%的工作</p><p><span class="ts">02:06</span>包括其實這個東西</p><p><span class="ts">02:08</span>我們今天上面一直認為</p><p><span class="ts">02:09</span>國才應該禁止的</p><p><span class="ts">02:10</span>但是他也提到了</p><p><span class="ts">02:12</span>我們允許大家去使用大語言模型</p><p><span class="ts">02:14</span>成本是AI</p><p><span class="ts">02:15</span>代碼輔助工具</p><p><span class="ts">02:16</span>以及AI智能體</p><p><span class="ts">02:17</span>都是可行的</p><p><span class="ts">02:19</span>但是你的可行</p><p><span class="ts">02:19</span>你要去記錄你具體的</p><p><span class="ts">02:21</span>輸入輸出的東西是什麼</p><p><span class="ts">02:23</span>即我們使用AI智能體的時候</p><p><span class="ts">02:24</span>AI智能體幫你做了什麼工作</p><p><span class="ts">02:26</span>你必須要標明</p><p><span class="ts">02:28</span>因為我們很多AI智能體</p><p><span class="ts">02:30</span>它就被把你們輸出了一片論文</p><p><span class="ts">02:32</span>所以這個論文的AI中的使用痕跡什麼的</p><p><span class="ts">02:35</span>可能需要這些作者進行風暴打包</p><p><span class="ts">02:37</span>還有一個具體的功能</p><p><span class="ts">02:38</span>或者是我們在所有用完之後</p><p><span class="ts">02:42</span>自己進行縱解</p><p><span class="ts">02:43</span>這是智能體的問題</p><p><span class="ts">02:44</span>其二就是我們在使用它的時候</p><p><span class="ts">02:47</span>也是第二個跟大家提過了</p><p><span class="ts">02:48</span>我們國才對AI的態度是</p><p><span class="ts">02:50</span>既不知吃也不無力</p><p><span class="ts">02:51</span>就像Metal Level Pattern一樣</p><p><span class="ts">02:53</span>你可以使對一個工具</p><p><span class="ts">02:54</span>它可以幫你解體</p><p><span class="ts">02:56</span>但是我們始終堅信</p><p><span class="ts">02:58</span>它輸出的任何東西</p><p><span class="ts">03:01</span>如果不加修改</p><p><span class="ts">03:02</span>永遠無法達到過獎的水平</p><p><span class="ts">03:06</span>因為我們需要在20萬人裡面去爭取</p><p><span class="ts">03:09</span>前3000個名額</p><p><span class="ts">03:12</span>這也意味著大家不可能純靠延</p><p><span class="ts">03:15</span>要靠自己的想法</p><p><span class="ts">03:15</span>要靠自己的模型積累</p><p><span class="ts">03:17</span>要靠自己的倉貸經驗</p><p><span class="ts">03:18</span>才能完成最後前幾千名的決注</p><p><span class="ts">03:22</span>所以就是我們不可能</p><p><span class="ts">03:24</span>非常鼓勵大家去做這個事情</p><p><span class="ts">03:25</span>但是我們也不可能抵制大家去做</p><p><span class="ts">03:27</span>這是其二</p><p><span class="ts">03:28</span>其三就是如果你做了</p><p><span class="ts">03:29</span>那我們就需要在參考微線之前</p><p><span class="ts">03:32</span>什麼意思呢</p><p><span class="ts">03:33</span>我們證明</p><p><span class="ts">03:34</span>這是我們給大家準備的臥等模板</p><p><span class="ts">03:36</span>在臥等模板之前</p><p><span class="ts">03:39</span>我們最後是往</p><p><span class="ts">03:41</span>最後最後一百塊是敷路</p><p><span class="ts">03:42</span>然後是參考微線</p><p><span class="ts">03:43</span>在參考微線之前</p><p><span class="ts">03:46</span>什麼之後呢</p><p><span class="ts">03:46</span>我們用推廣之後</p><p><span class="ts">03:49</span>而我們去年是把這個AI當作一個</p><p><span class="ts">03:52</span>參考微線前引用</p><p><span class="ts">03:53</span>但這絕對不合適</p><p><span class="ts">03:55</span>包括今年</p><p><span class="ts">03:56</span>就是我們這兩年很多的</p><p><span class="ts">03:58</span>期刊都去發表關於AI當作</p><p><span class="ts">04:00</span>當作科研論文作者的這個這個說明</p><p><span class="ts">04:03</span>很多錢都是抵制的</p><p><span class="ts">04:04</span>因為這也是一道了科研倫理問題</p><p><span class="ts">04:06</span>這也是</p><p><span class="ts">04:07</span>其實我們感覺這真的是不合適</p><p><span class="ts">04:09</span>所以就馬上當作估計的一節</p><p><span class="ts">04:11</span>類似於智能材料一樣</p><p><span class="ts">04:12</span>我們需要在參考微線之前</p><p><span class="ts">04:14</span>你能描述你是否使用了AI</p><p><span class="ts">04:16</span>如果使用了AI</p><p><span class="ts">04:17</span>這裡需要簡單的描述一下</p><p><span class="ts">04:19</span>我們要做了什麼</p><p><span class="ts">04:20</span>然後一起的建日程材料</p><p><span class="ts">04:23</span>我們用一個PDF</p><p><span class="ts">04:24</span>詳細的PDF來描述</p><p><span class="ts">04:26</span>就這裡</p><p><span class="ts">04:27</span>然後我其實看到有些人說</p><p><span class="ts">04:30</span>想要在這個參考微線之前</p><p><span class="ts">04:31</span>再進一階</p><p><span class="ts">04:33</span>注意是萬萬不可的</p><p><span class="ts">04:34</span>因為我們書貿論文的證</p><p><span class="ts">04:36</span>我們一共有30頁</p><p><span class="ts">04:37</span>在30頁的拼幅內</p><p><span class="ts">04:40</span>我們如果想把這個PDF加在這裡面</p><p><span class="ts">04:42</span>所以參考文</p><p><span class="ts">04:44</span>30頁包括什麼樣</p><p><span class="ts">04:45</span>參考微線及參考微線以前的所有東西</p><p><span class="ts">04:48</span>不包括附入</p><p><span class="ts">04:49</span>也有意味</p><p><span class="ts">04:50</span>如果你想把你的AI手錶加進去的話</p><p><span class="ts">04:52</span>那你就可以再加到一頁的篇幅</p><p><span class="ts">04:54</span>按照他們的說法</p><p><span class="ts">04:55</span>那這樣我們的總接手</p><p><span class="ts">04:56</span>從30頁變成29頁了</p><p><span class="ts">04:58</span>那你自斷一臂</p><p><span class="ts">05:00</span>而我們的使用規範</p><p><span class="ts">05:01</span>其實就是要求就是</p><p><span class="ts">05:03</span>我們只需要在這裡聲明</p><p><span class="ts">05:05</span>我們就插了每一句話</p><p><span class="ts">05:06</span>或者一小段話</p><p><span class="ts">05:08</span>具體做了什麼</p><p><span class="ts">05:09</span>然後具體的去建智能材料</p><p><span class="ts">05:11</span>你將這個智能材料裡面</p><p><span class="ts">05:12</span>就是建智能材料什麼什麼</p><p><span class="ts">05:14</span>PDF</p><p><span class="ts">05:14</span>你把這個PDF說明了就可以</p><p><span class="ts">05:17</span>然後我們在智能材料裡面</p><p><span class="ts">05:19</span>這個PDF放什麼呢</p><p><span class="ts">05:20</span>就放</p><p><span class="ts">05:21</span>我們具體用了AI工具版本類型</p><p><span class="ts">05:23</span>這個就和去年差不多了</p><p><span class="ts">05:25</span>但直播是把曲面寫得更詳細一些</p><p><span class="ts">05:27</span>把它變成了一個PDF的形式</p><p><span class="ts">05:29</span>把節目錄環節具體的提問方式</p><p><span class="ts">05:32</span>以及股要情況</p><p><span class="ts">05:34</span>可以主要千萬別直接全文符咧</p><p><span class="ts">05:37</span>那樣就上百AA4紙</p><p><span class="ts">05:41</span>不合適</p><p><span class="ts">05:42</span>最後就是語言的潤色出外</p><p><span class="ts">05:43</span>我們不需要說</p><p><span class="ts">05:44</span>你一句一句的讓它進入潤色</p><p><span class="ts">05:46</span>這是完全不必要的工作</p><p><span class="ts">05:48</span>好吧</p><p><span class="ts">05:49</span>然後最後五條六條</p><p><span class="ts">05:50</span>就是對上述的工作做了一個總結</p><p><span class="ts">05:52</span>你做了用了AI</p><p><span class="ts">05:54</span>那你就需要標明</p><p><span class="ts">05:55</span>如果你沒有用AI</p><p><span class="ts">05:56</span>那句實話說</p><p><span class="ts">05:58</span>但是按照我們今年國美會7月份的統計</p><p><span class="ts">06:02</span>今年的AI使用率好像已經到了97%</p><p><span class="ts">06:05</span>應該是</p><p><span class="ts">06:06</span>我看一下這個數據</p><p><span class="ts">06:07</span>我有點忘了</p><p><span class="ts">06:08</span>今年是今年統計的情況是7月份統計的</p><p><span class="ts">06:14</span>今年統計的</p><p><span class="ts">06:17</span>我放在哪裡了</p><p><span class="ts">06:20</span>稍微等我暫停一下視頻</p><p><span class="ts">06:31</span>我記得是</p><p><span class="ts">06:44</span>好</p><p><span class="ts">06:45</span>我給大家說一下</p><p><span class="ts">06:46</span>我們今年7月份對AI的統計</p><p><span class="ts">06:50</span>97.8%的學生自爆使用AI</p><p><span class="ts">06:57</span>自爆是一個報名的報</p><p><span class="ts">06:59</span>自爆使用AI</p><p><span class="ts">07:00</span>然後</p><p><span class="ts">07:02</span>16.4%的學生表示沒有AI不會三塞</p><p><span class="ts">07:07</span>同時37.6%的學生表示</p><p><span class="ts">07:10</span>無法判斷AI數的對錯</p><p><span class="ts">07:14</span>這是當下AI的一個統計情況</p><p><span class="ts">07:16</span>所以高達97%的人都用AI</p><p><span class="ts">07:19</span>這個時候我們通常我們建議大家</p><p><span class="ts">07:21</span>你直接寫一句話</p><p><span class="ts">07:23</span>說我們全文並沒有進行AI的使用</p><p><span class="ts">07:26</span>而且AI又沒用</p><p><span class="ts">07:28</span>除了AI這股之外</p><p><span class="ts">07:29</span>其實你我們去閱讀的話</p><p><span class="ts">07:30</span>也很容易看到它能否真的去生了AI</p><p><span class="ts">07:34</span>所以如果基本上大家用了</p><p><span class="ts">07:36</span>就按照你用了這個過程</p><p><span class="ts">07:38</span>簡單的去寫一下就可以</p><p><span class="ts">07:40</span>而這個東西不加分</p><p><span class="ts">07:42</span>但是你沒了之後會扣分</p><p><span class="ts">07:45</span>所以它是一個格式的鋼區</p><p><span class="ts">07:47</span>而非是你的價分項</p><p><span class="ts">07:50</span>好吧</p><p><span class="ts">07:51</span>就先這樣</p><p><span class="ts">07:52</span>如果後面再有補充的話</p><p><span class="ts">07:53</span>我再給大家進行補充</p><p><span class="ts">07:54</span>不過就是這個論文裡面放置的點</p><p><span class="ts">07:57</span>一方是篇幅</p><p><span class="ts">07:58</span>感覺其他的平台解讀有點小問題</p></div>
+<div class="btns"><button class="btn s" id="sbtn">分享这一条</button><button class="btn s" id="vbtn">观看原视频</button><button class="btn g" id="cbtn">复制原视频链接</button></div>
+<div class="srcline">视频链接：https://www.douyin.com/video/7670359143915539747</div>
+<div class="foot">由抖音收藏自动整理 · 笔记原文保存在本机知识库</div>
+</div></article>
+</div>
+<script>window.__URL__="https://www.douyin.com/video/7670359143915539747";window.__PAGE__="n/7670359143915539747.html";</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('vbtn'), cp = document.getElementById('cbtn');
+  var u = window.__URL__ || '';
+  function toast(m){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=m;t.classList.add('on');clearTimeout(window.__tt);
+    window.__tt=setTimeout(function(){t.classList.remove('on');},1800);
+  }
+  function copy(s, tip){
+    var m = tip || '链接已复制';
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){toast(m);},
+        function(){fb(s, m);});
+    } else { fb(s, m); }
+  }
+  function fb(s, tip){
+    var m = tip || '链接已复制';
+    var ta=document.createElement('textarea');ta.value=s;
+    ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast(m);}catch(e){toast('复制失败，请长按链接复制');}
+    document.body.removeChild(ta);
+  }
+  if(btn) btn.addEventListener('click', function(e){
+    e.preventDefault(); if(!u) return;
+    var w=null; try{ w=window.open(u,'_blank'); }catch(err){ w=null; }
+    if(!w){ try{ location.href=u; }catch(e2){ copy(u, '原视频链接已复制，去抖音打开'); } }
+  });
+  if(cp) cp.addEventListener('click', function(e){ e.preventDefault(); copy(u, '原视频链接已复制，去抖音打开'); });
+  var sb = document.getElementById('sbtn');
+  if(sb) sb.addEventListener('click', function(e){
+    e.preventDefault();
+    copy((location.href||'').split('#')[0], '本条分享链接已复制，可直接发到群里');
+  });
+})();
+</script>
+
+</body></html>

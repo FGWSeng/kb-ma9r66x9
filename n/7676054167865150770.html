@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>21年C题真题演练！带你速通数模真题！</title>
+<meta name="description" content="视频介绍了使用数学建模工具Dabbit进行21年国赛C题真题演练，展示了建模、分析、文章生成和评分的全过程。">
+<meta property="og:title" content="21年C题真题演练！带你速通数模真题！">
+<meta property="og:description" content="视频介绍了使用数学建模工具Dabbit进行21年国赛C题真题演练，展示了建模、分析、文章生成和评分的全过程。">
+<meta property="og:type" content="article">
+<style>
+:root{
+ --bg:#f6f7f9; --card:#fff; --ink:#1a1d21; --sub:#6b7280; --line:#e5e7eb;
+ --accent:#0f766e; --accent-soft:#ecfdf5; --tag:#f1f5f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 64px}
+header.top{padding:6px 2px 16px}
+h1{font-size:24px;margin:0 0 6px;letter-spacing:.4px}
+.meta{color:var(--sub);font-size:14px}
+.stats{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;
+ padding:6px 12px;font-size:13px;cursor:pointer;color:var(--sub);transition:.15s;
+ font-family:inherit;line-height:1.4}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+ display:flex;flex-direction:column;cursor:pointer;transition:.18s;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10);border-color:#d6dde5}
+.thumb{aspect-ratio:16/10;background:#eef1f4 center/cover no-repeat;position:relative}
+.thumb .cat{position:absolute;left:10px;top:10px;background:rgba(15,118,110,.94);color:#fff;
+ font-size:12px;padding:3px 9px;border-radius:6px;letter-spacing:.3px}
+.thumb .dur{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;
+ font-size:12px;padding:2px 7px;border-radius:5px}
+.cbody{padding:13px 15px 15px;display:flex;flex-direction:column;gap:7px;flex:1}
+.card h3{margin:0;font-size:15.5px;line-height:1.45;font-weight:600;
+ display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.autor{font-size:12.5px;color:var(--sub)}
+.one{font-size:13.5px;color:#374151;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.more{margin-top:auto;padding-top:4px;font-size:12.5px;color:var(--accent);font-weight:600}
+.bar{display:flex;align-items:center;justify-content:space-between;margin:2px 0 14px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;
+ color:var(--accent);cursor:pointer;background:none;border:0;padding:6px 0;font-weight:600;font-family:inherit}
+.back:hover{opacity:.75}
+.pos{font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.hero{position:relative;height:380px;background:#101418;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero-bg{position:absolute;inset:-30px;background:center/cover no-repeat;
+ filter:blur(26px) saturate(1.1);opacity:.5;transform:scale(1.12)}
+.hero-fg{position:absolute;inset:0;background:center/contain no-repeat;z-index:1}
+.dbody{padding:20px 22px 24px}
+.dbody h2{margin:0 0 10px;font-size:20px;line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.tags span{background:var(--tag);color:#475569;font-size:12.5px;padding:4px 10px;border-radius:7px}
+.sec-t{font-size:14px;font-weight:700;color:var(--accent);margin:20px 0 8px;
+ letter-spacing:.4px;display:flex;align-items:center;gap:8px}
+.sec-t::before{content:"";width:3px;height:14px;background:var(--accent);border-radius:2px}
+.sec-t .cnt{font-weight:500;color:var(--sub);font-size:12px;letter-spacing:0}
+.lead{font-size:15px;color:#242a31;margin:0}
+ul.pts{margin:0;padding-left:0;list-style:none}
+ul.pts li{position:relative;padding-left:20px;margin:8px 0;color:#242a31;font-size:15px}
+ul.pts li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;
+ border-radius:50%;background:var(--accent);opacity:.55}
+.kv{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;
+ padding:11px 14px;font-size:14px;color:#155e56}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:10px;
+ font-size:14px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;
+ font-family:inherit;line-height:1.4}
+.btn.p{background:var(--accent);color:#fff}
+.btn.s{background:#fff;color:var(--accent);border-color:var(--accent)}
+.btn.g{background:#f3f4f6;color:#374151;border-color:var(--line)}
+.transcript{margin-top:4px;max-height:62vh;overflow:auto;border:1px solid var(--line);
+ border-radius:10px;padding:14px 16px;background:#fbfcfd}
+.transcript p{margin:2px 0;font-size:14.5px;color:#242a31;line-height:1.7}
+.transcript p .ts{color:#9aa3ad;font-size:12.5px;margin-right:8px;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--sub);padding:60px 0}
+.srcline{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);
+ font-size:12.5px;color:var(--sub);word-break:break-all;line-height:1.6}
+.srcline span{color:#0f766e;user-select:all;-webkit-user-select:all}
+.toast{position:fixed;left:50%;bottom:40px;transform:translate(-50%,16px);
+ background:rgba(22,28,32,.94);color:#fff;font-size:13.5px;padding:10px 18px;border-radius:9px;
+ opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{margin-top:36px;text-align:center;color:#9aa3ad;font-size:12.5px;line-height:1.9}
+@media (max-width:600px){
+ .wrap{padding:14px 12px 48px} h1{font-size:20px}
+ .grid{grid-template-columns:1fr;gap:12px}
+ .hero{height:260px}
+ .dbody{padding:16px 15px 20px} .dbody h2{font-size:17.5px}
+ ul.pts li,.lead{font-size:14.5px}
+ .transcript{max-height:none}
+}
+
+.wrap{max-width:820px}
+.share-bar{display:flex;gap:10px;align-items:center;margin:0 0 14px}
+.share-bar a{color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.share-bar a:hover{text-decoration:underline}
+.note-meta{color:var(--sub);font-size:13.5px;margin:6px 0 18px}
+.transcript p{display:flex;gap:12px;margin:0 0 6px;font-size:14.5px;line-height:1.65}
+.transcript .ts{flex:0 0 44px;color:#94a3b8;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 6px}
+.srcline{font-size:12.5px;color:var(--sub);word-break:break-all;margin-top:8px}
+.foot{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--sub);font-size:12.5px}
+</style></head>
+<body><div class="wrap">
+<div class="share-bar"><a href="../index.html">← 全部收藏总目录</a></div>
+<div class="hero"><div class="hero-bg" style="background-image:url('../covers/7676054167865150770_460.jpg')"></div><div class="hero-fg" style="background-image:url('../covers/7676054167865150770_460.jpg')"></div></div>
+<article class="panel"><div class="dbody">
+<h2>21年C题真题演练！带你速通数模真题！</h2>
+<div class="tags"><span>分类 数学建模</span><span>明天吃什么好</span><span>时长 2:48</span><span>2026-11-22</span></div>
+<div class="sec-t">一句话总结</div><p class="lead">视频介绍了使用数学建模工具Dabbit进行21年国赛C题真题演练，展示了建模、分析、文章生成和评分的全过程。</p>
+<div class="sec-t">核心要点</div><ul class="pts"><li>视频主要展示了使用数学建模工具Dabbit进行21年国赛C题真题的实战演练过程。</li><li>Dabbit工具能够基于复杂数据构建供应商重要性评价、供货能力预测、订购与转运优化、产能提升策算的完整建模链条。</li><li>Dabbit支持对问题进行分析重构，并提供具体的模型说明和逻辑思路，方便用户在实际作题中进行修改。</li><li>Dabbit能够生成符合标准的数学建模文章，包括三线表格式、标准公式格式，并支持图表润色和保留历史版本。</li><li>Dabbit支持导出Word、PDF和MD文档格式，且导出后格式不会混乱，绘图效果优秀。</li></ul>
+<div class="sec-t">关键信息</div><div class="kv">- 21年国赛C题真题；- 数学建模工具Dabbit；- 供应商重要性评价；- 供货能力预测；- 订购与转运优化；- 产能提升策算；- 文章评分75分，相当于省一的水平</div>
+<div class="sec-t">完整文字稿 <span class="cnt">18 段</span></div><div class="transcript"><p><span class="ts">00:00</span>大家好,今天给大家带来的是21年国赛C题的实战演练。这里我们简单对问题进行回顾,本题为让某建筑和装饰版材生产企业原材料的订购与运输问题。</p><p><span class="ts">00:12</span>基于复建数据构建供应商重要性评价、供货能力预测、订购与转运优化、产能提升策算的完整建模链条。</p><p><span class="ts">00:20</span>为企业的供应商选择订购与转运决策提供定量依据,首先点击数学建模制能体将我们的帅题提交上去。检查没问题后点击下一步,将题目所带复建提交上去,检查无误后点击下一步。</p><p><span class="ts">00:37</span>此时四个问题都已经分析完毕,可以看到它对于每个问题的分析以及对应需要运用的模型的说明都很具体清晰。</p><p><span class="ts">00:46</span>逻辑思路也清晰明了,在实际作题中,如果它输出的模型以及预设条件与我们预想的有出入,我们可以直接在面板上进行修改。</p><p><span class="ts">00:55</span>同时Dabbit也支持对一个或多个问题进行分析重构,可以看到它的输出在我们的预期内,我们直接点击确定并提交建模即可。</p><p><span class="ts">01:05</span>此时进入了沙河页面,我们稍作等待即可。此时可以看到沙河页面已经加载完成,沙河是整个题目建模分析过程的总缆。</p><p><span class="ts">01:17</span>接下来我们点击左上角的文章生成即可,可以看到此时文章已经生成完成。</p><p><span class="ts">01:24</span>在看文章之前我们先点击文章评分,选择对应的赛事类型,如果没有的话选择相近的即可。</p><p><span class="ts">01:33</span>可以看到整篇文章建模思路相当扎实,文章结构框架具体恰当,文章行文逻辑清晰明确,对于各个问题回答总结归纳也是十分精减准确。</p><p><span class="ts">01:44</span>可以看到其中运用的表格类型也是我们科研文章中常用的三线表格式,公式的格式也是符合标准的。</p><p><span class="ts">01:51</span>对于图表、后期点击右上角还可以根据自己的需求对图表进行润色,同时支持保留历史版本。</p><p><span class="ts">01:59</span>对于文章的导出Dabbit支持导出World,PDF以及MD文档格式。这里导出World文档,可以看到整篇文章导出World之后格式也没有被打乱。</p><p><span class="ts">02:10</span>整篇文章的完成度已经很高,后期只需要针对比赛要求对文章进行润色调整即可。</p><p><span class="ts">02:17</span>图表以及公式的格式也没有因为导出为World而出现乱码的情况,同时Dabbit的绘图效果也是非常优秀,图像也是非常的美观。</p><p><span class="ts">02:26</span>回到评分页我们可以看到系统给出的评分为分75分,相当于省一的水平。</p><p><span class="ts">02:33</span>对于文章出现的问题它针对各问题给出了建议,可以直接在面板上进行修改,也可以对一个或多个问题进行分析重构。</p><p><span class="ts">02:45</span>这就是本次作题的全部过程,快去试试吧!</p></div>
+<div class="btns"><button class="btn s" id="sbtn">分享这一条</button><button class="btn s" id="vbtn">观看原视频</button><button class="btn g" id="cbtn">复制原视频链接</button></div>
+<div class="srcline">视频链接：https://www.douyin.com/video/7676054167865150770</div>
+<div class="foot">由抖音收藏自动整理 · 笔记原文保存在本机知识库</div>
+</div></article>
+</div>
+<script>window.__URL__="https://www.douyin.com/video/7676054167865150770";window.__PAGE__="n/7676054167865150770.html";</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('vbtn'), cp = document.getElementById('cbtn');
+  var u = window.__URL__ || '';
+  function toast(m){
+    var t=document.getElementById('toast');
+    if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}
+    t.textContent=m;t.classList.add('on');clearTimeout(window.__tt);
+    window.__tt=setTimeout(function(){t.classList.remove('on');},1800);
+  }
+  function copy(s, tip){
+    var m = tip || '链接已复制';
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(s).then(function(){toast(m);},
+        function(){fb(s, m);});
+    } else { fb(s, m); }
+  }
+  function fb(s, tip){
+    var m = tip || '链接已复制';
+    var ta=document.createElement('textarea');ta.value=s;
+    ta.style.cssText='position:fixed;left:-9999px';document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast(m);}catch(e){toast('复制失败，请长按链接复制');}
+    document.body.removeChild(ta);
+  }
+  if(btn) btn.addEventListener('click', function(e){
+    e.preventDefault(); if(!u) return;
+    var w=null; try{ w=window.open(u,'_blank'); }catch(err){ w=null; }
+    if(!w){ try{ location.href=u; }catch(e2){ copy(u, '原视频链接已复制，去抖音打开'); } }
+  });
+  if(cp) cp.addEventListener('click', function(e){ e.preventDefault(); copy(u, '原视频链接已复制，去抖音打开'); });
+  var sb = document.getElementById('sbtn');
+  if(sb) sb.addEventListener('click', function(e){
+    e.preventDefault();
+    copy((location.href||'').split('#')[0], '本条分享链接已复制，可直接发到群里');
+  });
+})();
+</script>
+
+</body></html>
